@@ -1,0 +1,11 @@
+.nav_line {
+    height: 70px !important;
+    border-bottom: 1px #c2c2c2 solid !important;
+}
+
+@media screen and (max-width: 990px) {
+    .nav_line {
+        height: 0px !important;
+        border-bottom: 0px #c2c2c2 solid !important;
+    }
+}
