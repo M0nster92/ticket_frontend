@@ -46,22 +46,23 @@
                                             </div> -->
                                         <form class="form" [formGroup]="sortForm">
                                             <div class="col-sm-12 col-md-8">
-                                                <div class="dataTables_length" id="kt_datatable1_length"><label>Status:
-                                                            <select name="kt_datatable1_length" aria-controls="kt_datatable1"
+                                                <div class="dataTables_length" id="kt_datatable1_length"><label>Type:
+                                                            <select (change)="onChangeType()" name="kt_datatable1_length" aria-controls="kt_datatable1"
                                                                 class="custom-select custom-select-sm form-control form-control-sm"
                                                                 formControlName="type">
                                                                 <option [value]=""></option>
+                                                                <option *ngFor="let type of account_types; let i = index" [value]="account_types[i].value">{{type.name}}</option>
                                                             </select>
                     
-                                                            Result: 0</label></div>
+                                                            Result: {{accountCount}}</label></div>
                                             </div>
 
                                         </form>
 
                                         <form class="form" [formGroup]="searchForm">
                                             <div class="col-sm-12 col-md-12">
-                                                <div id="kt_datatable_filter" class="dataTables_filter"><label>Search:
-                                                    <input formControlName="str" type="search" class="form-control form-control-sm" placeholder="" aria-controls="kt_datatable">
+                                                <div id="kt_datatable_filter" class="dataTables_filter"><label>Search Name:
+                                                    <input formControlName="str" (input)="onSearchString($event)" type="search" class="form-control form-control-sm" placeholder="" aria-controls="kt_datatable">
                                                     </label>
                                                 </div>
                                             </div>
@@ -74,29 +75,37 @@
                                                 <thead>
 
                                                     <tr role="row">
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Lead ID</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Account ID</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Type</th>
-
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Address</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">First Name</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Last Name</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Phone</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Address</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Created</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody *ngIf="loaded">
+                                                    <tr *ngFor=" let data of accountList | paginate:{itemsPerPage: 10, currentPage: p} ">
+                                                        <td>{{data.account_code}}</td>
+                                                        <td>{{data.account_type}}</td>
+                                                        <td>{{data.first_name}}</td>
+                                                        <td>{{data.last_name}}</td>
+                                                        <td>{{data.mobile_phone}}</td>
+                                                        <td>{{data.street}}</td>
+                                                        <td>{{data.created_time | date:'yyyy/MM/dd hh:mm a'}}</td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <div class="row ">
-
-                                        <div class="col-sm-12 col-md-7 ">
+                                        <div class="col-sm-12 col-md-6 ">
                                             <div class="dataTables_paginate paging_simple_numbers " id="kt_datatable_paginate ">
-                                                <ul class="pagination ">
+                                                <ul class="pagination " style="float: left;">
                                                     <!--<li class="paginate_button page-item previous disabled " id="kt_datatable_previous "><a href="# " aria-controls="kt_datatable " data-dt-idx="0 " tabindex="0 " class="page-link "><i class="ki ki-arrow-back "></i></a></li>
                                                         <li class="paginate_button page-item active "><a  aria-controls="kt_datatable " data-dt-idx="1 " tabindex="0 " class="page-link ">1</a></li>
                                                         <li class="paginate_button page-item next " id="kt_datatable_next "><a href="# " aria-controls="kt_datatable " data-dt-idx="6 " tabindex="0 " class="page-link "><i class="ki ki-arrow-next "></i></a></li> -->
-                                                    <pagination-controls (pageChange)="p = $event" class="float-right"></pagination-controls>
+                                                    <pagination-controls (pageChange)="p=$event "></pagination-controls>
                                                 </ul>
                                             </div>
                                         </div>

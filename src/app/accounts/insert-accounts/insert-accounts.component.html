@@ -60,7 +60,7 @@
                         <div class="form-group row">
                             <div class="col-lg-4">
                                 <label>Email:</label>
-                                <input type="text" formControlName="email" class="form-control" placeholder="Mobile Number">
+                                <input type="text" formControlName="email" class="form-control" placeholder="Email">
                             </div>
                             <div class="col-lg-4">
                                 <label>Contact:</label>
@@ -83,14 +83,14 @@
                             <div class="col-lg-4">
                                 <label>City:</label>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" formControlName="city" placeholder="Enter your postalcode">
+                                    <input type="text" class="form-control" formControlName="city" placeholder="City">
                                 </div>
                             </div>
                             <div class="col-lg-4">
                                 <label>Province:</label>
                                 <div class="input-group">
 
-                                    <input type="text" class="form-control" formControlName="province" placeholder="Enter your postalcode">
+                                    <input type="text" class="form-control" formControlName="province" placeholder="Province">
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -101,7 +101,7 @@
                                                     <i class="la la-bookmark-o"></i>
                                                 </span>
                                     </div>
-                                    <input type="text" class="form-control" formControlName="postal_code" placeholder="Enter your postalcode">
+                                    <input type="text" class="form-control" formControlName="postal_code" placeholder="Postal Code">
                                 </div>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
                                 <div class="form-group">
                                     <label for="exampleSelectd">Account Type:</label>
                                     <select class="form-control" formControlName="account_type" id="exampleSelectd">
-                                        <option>1</option>
+                                        <option *ngFor="let type of account_types; let i = index" [value]="account_types[i].value">{{type.name}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                         <div class="row">
                             <div class="col-lg-4"></div>
                             <div class="col-lg-8">
-                                <button type="button" class="btn btn-primary mr-2" style="float: right;">Submit</button>
+                                <button type="button" class="btn btn-primary mr-2" style="float: right;" (click)="submit()">Submit</button>
                                 <button type="button" class="btn btn-secondary" style="float: right; margin-right: 10px;">Cancel</button>
                             </div>
                         </div>

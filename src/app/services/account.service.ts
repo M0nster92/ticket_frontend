@@ -25,4 +25,16 @@ export class AccountService implements OnInit {
     return this.http.get<[]>(this.account_api+'/getaccount/');
   }
 
+  newAccount(obj){
+    return this.http.post<[]>(this.account_api+"/newaccount/",obj);
+  }
+
+  searchAccount(val){
+    return this.http.get<[]>(this.account_api+"/searchaccount/"+val);
+  }
+
+  getAccountByTypes(val){
+    return this.http.get<[]>(this.account_api+"/getaccount/?account_type="+val);
+  }
+
 }
