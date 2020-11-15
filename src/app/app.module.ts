@@ -35,12 +35,45 @@ import {MatCardModule} from '@angular/material';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {HttpClientModule} from '@angular/common/http';
 import { NavComponent } from './nav/nav.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { AccountListComponent } from './accounts/account-list/account-list.component';
+import { AccountViewComponent } from './accounts/account-view/account-view.component';
+import { InsertTicketComponent } from './tickets/insert-ticket/insert-ticket.component';
+import { TicketViewComponent } from './tickets/ticket-view/ticket-view.component';
+import { InsertActionsComponent } from './tickets/insert-actions/insert-actions.component';
+import { ActionViewComponent } from './tickets/action-view/action-view.component';
+import { InsertAppointmentsComponent } from './tickets/insert-appointments/insert-appointments.component';
+import { AppointmentsViewComponent } from './tickets/appointments-view/appointments-view.component';
+import { CalenderViewComponent } from './tickets/calender-view/calender-view.component';
+import { LoginComponent } from './auth/login/login.component';
+import { ManageUserAuthComponent } from './auth/manage-user-auth/manage-user-auth.component';
+import { AdminPanelComponent } from './auth/admin-panel/admin-panel.component';
+import { InsertTechnicianComponent } from './technician/insert-technician/insert-technician.component';
+import { ManageTechnicianComponent } from './technician/manage-technician/manage-technician.component';
+import { InsertAccountsComponent } from './accounts/insert-accounts/insert-accounts.component';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavComponent
+    NavComponent,
+    DashboardComponent,
+    AccountListComponent,
+    AccountViewComponent,
+    InsertTicketComponent,
+    TicketViewComponent,
+    InsertActionsComponent,
+    ActionViewComponent,
+    InsertAppointmentsComponent,
+    AppointmentsViewComponent,
+    CalenderViewComponent,
+    LoginComponent,
+    ManageUserAuthComponent,
+    AdminPanelComponent,
+    InsertTechnicianComponent,
+    ManageTechnicianComponent,
+    InsertAccountsComponent
   ],
   imports: [
     BrowserModule,
@@ -76,6 +109,7 @@ import { NavComponent } from './nav/nav.component';
     MatDialogModule,
     ScheduleModule, RecurrenceEditorModule,
     MatGridListModule,
+    NgxPaginationModule,
     SweetAlert2Module.forRoot()
   ],
   providers: [],
