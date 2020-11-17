@@ -46,7 +46,19 @@ export class InsertAccountsComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.accountForm.getRawValue());
+    this.as.newAccount(this.accountForm.getRawValue()).toPromise()
+    .then((res:any)=>{
+      if(res.status == "ok"){
+        swal.fire(
+          "","New Account is created", "success"
+        )
+        this.accountForm.reset();
+      } else {
+        swal.fire(
+          "", "Failed! Try again", "error"
+        )
+      }
+    })
   }
 
   checkCheckBoxvalue(event){

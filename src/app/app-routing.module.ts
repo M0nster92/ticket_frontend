@@ -6,10 +6,12 @@ import {AccountListComponent} from "./accounts/account-list/account-list.compone
 import {AccountViewComponent} from "./accounts/account-view/account-view.component";
 import {LoginComponent} from "./auth/login/login.component";
 import {SignupComponent } from "./auth/signup/signup.component";
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path : '', component: NavComponent,
   children:[
+    {path : '', component:DashboardComponent},
     {path : "newaccount", component:InsertAccountsComponent},
     {path : "accounts", component:AccountListComponent},
     {path : "account/:id", component: AccountViewComponent},

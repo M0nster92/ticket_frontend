@@ -14,6 +14,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 export class LoginComponent implements OnInit {
 
   loginForm : FormGroup;
+  user_id : any;
 
   constructor(
     private fb: FormBuilder,
@@ -38,13 +39,17 @@ export class LoginComponent implements OnInit {
       this.us.login(this.loginForm.getRawValue()).toPromise()
       .then((res:any)=>{
         if(res.status == "ok"){
-          console.log(res);
+          console.log(res.data);
+          this.user_id = res.data.user_id;
+          this.us.checkSession();
           this.route.navigate(['']);
         } else {
           console.log("No");
         }
       })
+      
     }
+
   }
 
 }
