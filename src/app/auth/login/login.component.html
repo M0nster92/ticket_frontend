@@ -1,1 +1,52 @@
-<p>login works!</p>
+<!--begin::Login-->
+<div style="background-image: url('../../../assets/bg-3.jpg');">
+    <div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat">
+        <div class="login-form text-center p-10 position-relative overflow-hidden" style="width: 450px;">
+            <!--begin::Login Header-->
+            <div class=" d-flex flex-center mb-15 ">
+                <a>
+                    <img src="https://thumbs.dreamstime.com/b/ticket-linear-icon-modern-outline-logo-concept-white-background-cinema-collection-suitable-use-web-apps-mobile-133516250.jpg " class="max-h-75px " alt=" ">
+                </a>
+            </div>
+            <!--end::Login Header-->
+            <!--begin::Login Sign in form-->
+            <div class="login-signin ">
+                <div class="mb-20 ">
+                    <h3>Sign In</h3>
+                    <div class="text-muted font-weight-bold ">Enter Login Details: </div>
+                </div>
+                <form class="form fv-plugins-bootstrap fv-plugins-framework " id="kt_login_signin_form " novalidate="novalidate " [formGroup]="loginForm">
+                    <div class="form-group mb-5 fv-plugins-icon-container ">
+                        <input class="form-control h-auto form-control-solid py-4 px-8 " formControlName="user_name" type="text" placeholder="User Name">
+                        <div class="fv-plugins-message-container "></div>
+                    </div>
+                    <div class="form-group mb-5 fv-plugins-icon-container ">
+                        <input class="form-control h-auto form-control-solid py-4 px-8 " formControlName="password" type="password " placeholder="Password ">
+                        <div class="fv-plugins-message-container "></div>
+                    </div>
+                    <div class="form-group d-flex flex-wrap justify-content-between align-items-center ">
+                        <div class="checkbox-inline ">
+                            <label class="checkbox m-0 text-muted ">
+                                    <input type="checkbox " name="remember ">
+                                    <span></span>Remember me</label>
+                        </div>
+                        <a href="javascript:; " id="kt_login_forgot " class="text-muted text-hover-primary " style="margin-left: 25px; ">Forget Password ?</a>
+                    </div>
+                    <button id="kt_login_signin_submit " class="btn btn-primary font-weight-bold px-20 py-2 my-3 mx-4 " (click)="submit()">Sign In</button>
+                    <div></div>
+                </form>
+                <div class="mt-10 ">
+                    <span class="opacity-70 mr-4 ">Don't have an account yet?</span>
+                    <a href="javascript:; " id="kt_login_signup " class="text-muted text-hover-primary font-weight-bold ">Sign Up!</a>
+                </div>
+            </div>
+            <!--end::Login Sign in form-->
+            <!--begin::Login Sign up form-->
+        </div>
+        <!--end::Login forgot password form-->
+    </div>
+    <div class="login-form text-center p-40 position-relative overflow-hidden "></div>
+</div>
+
+
+<!--end::Login-->

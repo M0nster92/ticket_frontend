@@ -40,26 +40,17 @@ export class InsertAccountsComponent implements OnInit {
       province : [""],
       postal_code : [""],
       account_type : [""],
-      user_name : [""]
+      user_name : [""],
+      status : [""]
     })
   }
 
   submit(){
-    if(this.accountForm.valid){
-      this.as.newAccount(this.accountForm.getRawValue()).toPromise()
-      .then((res:any)=>{
-        if(res.status == "ok"){
-          swal.fire(
-            "", "Account is created", "success"
-            )
-            this.accountForm.reset();
-        } else {
-          swal.fire(
-            "", "Account creation failed! Try Again", "error"
-            )
-        }
-      })
-    }
+    console.log(this.accountForm.getRawValue());
+  }
+
+  checkCheckBoxvalue(event){
+    console.log(event.target.checked)
   }
 
 }

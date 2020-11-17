@@ -4,6 +4,7 @@ import {
 FormGroup,FormControl,FormBuilder,Validator,Validators, FormArray
 } from '@angular/forms';
 import {DropdownService} from "../../services/dropdown.service";
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-account-list',
@@ -23,7 +24,8 @@ export class AccountListComponent implements OnInit {
   constructor(
     private as : AccountService,
     private fb: FormBuilder,
-    private ds : DropdownService
+    private ds : DropdownService,
+    private router : Router
   ) { }
 
   ngOnInit(): void {
@@ -108,6 +110,10 @@ export class AccountListComponent implements OnInit {
       this.Accounts();
       this.countAccount();
     }
+  }
+
+  naviagateCustomerView(id){
+    this.router.navigate(['account', id]);
   }
 
 }

@@ -37,4 +37,8 @@ export class AccountService implements OnInit {
     return this.http.get<[]>(this.account_api+"/getaccount/?account_type="+val);
   }
 
+  getAccount(val){
+    return this.http.get<[]>(this.account_api+"/getaccount/"+val);
+  }
+
 }

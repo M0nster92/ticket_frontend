@@ -52,6 +52,8 @@ import { InsertTechnicianComponent } from './technician/insert-technician/insert
 import { ManageTechnicianComponent } from './technician/manage-technician/manage-technician.component';
 import { InsertAccountsComponent } from './accounts/insert-accounts/insert-accounts.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { SignupComponent } from './auth/signup/signup.component';
+import { ProfileComponent } from './auth/profile/profile.component';
 
 
 @NgModule({
@@ -73,7 +75,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     AdminPanelComponent,
     InsertTechnicianComponent,
     ManageTechnicianComponent,
-    InsertAccountsComponent
+    InsertAccountsComponent,
+    SignupComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

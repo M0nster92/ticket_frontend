@@ -86,7 +86,7 @@
                                                 </thead>
                                                 <tbody *ngIf="loaded">
                                                     <tr *ngFor=" let data of accountList | paginate:{itemsPerPage: 10, currentPage: p} ">
-                                                        <td>{{data.account_code}}</td>
+                                                        <td class="text-hover-primary" style="cursor: pointer;" (click)="naviagateCustomerView(data.account_code)">{{data.account_code}}</td>
                                                         <td>{{data.account_type}}</td>
                                                         <td>{{data.first_name}}</td>
                                                         <td>{{data.last_name}}</td>
