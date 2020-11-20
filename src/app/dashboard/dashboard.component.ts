@@ -21,7 +21,12 @@ export class DashboardComponent implements OnInit {
     var localData = localStorage.getItem("session");
     this.userSession = JSON.parse(localData);
     console.log(this.userSession); */
-    this.us.validateSession();
+    this.userSession = this.us.newSession();
+    console.log(this.userSession);
+    this.refreshNgOnInit();
+    }
+
+    refreshNgOnInit(){
     }
 
 }

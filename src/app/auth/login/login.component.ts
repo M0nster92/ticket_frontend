@@ -42,7 +42,6 @@ export class LoginComponent implements OnInit {
           console.log(res.data);
           this.user_id = res.data.user_id;
           this.us.checkSession();
-          this.route.navigate(['']);
         } else {
           console.log("No");
         }
