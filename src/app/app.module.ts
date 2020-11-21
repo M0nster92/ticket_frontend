@@ -54,6 +54,12 @@ import { InsertAccountsComponent } from './accounts/insert-accounts/insert-accou
 import {NgxPaginationModule} from 'ngx-pagination';
 import { SignupComponent } from './auth/signup/signup.component';
 import { ProfileComponent } from './auth/profile/profile.component';
+import { InsertDeviceComponent } from './device/insert-device/insert-device.component';
+import { DeviceViewComponent } from './device/device-view/device-view.component';
+import { InsertPackageComponent } from './package/insert-package/insert-package.component';
+import { PackageViewComponent } from './package/package-view/package-view.component';
+import { PackageListComponent } from './package/package-list/package-list.component';
+import { DeviceListComponent } from './device/device-list/device-list.component';
 
 
 @NgModule({
@@ -77,7 +83,13 @@ import { ProfileComponent } from './auth/profile/profile.component';
     ManageTechnicianComponent,
     InsertAccountsComponent,
     SignupComponent,
-    ProfileComponent
+    ProfileComponent,
+    InsertDeviceComponent,
+    DeviceViewComponent,
+    InsertPackageComponent,
+    PackageViewComponent,
+    PackageListComponent,
+    DeviceListComponent
   ],
   imports: [
     BrowserModule,
