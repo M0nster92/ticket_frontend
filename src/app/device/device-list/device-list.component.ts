@@ -91,6 +91,22 @@ export class DeviceListComponent implements OnInit {
     }
   }
 
+  onSearchString(event: any){
+    if(event.target.value.length > 2 ){
+      console.log(event.target.value);
+      this.deviceData = [];
+      this.ds.getDeviceByStr(event.target.value).toPromise()
+      .then((res:any)=>{
+        if(res.status == "ok"){
+          this.deviceData = res.data;
+          this.countDevice();
+        }
+      })
+    } else {
+      this.getDevices();
+    }
+  }
+
   newDevice(){
     const NewDeviceConfig = new MatDialogConfig();
     NewDeviceConfig.autoFocus = true;
