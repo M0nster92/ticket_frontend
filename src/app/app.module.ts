@@ -63,6 +63,7 @@ import { DeviceListComponent } from './device/device-list/device-list.component'
 import { MonthlyTicketComponent } from './tickets/monthly-ticket/monthly-ticket.component';
 import { MyTicketComponent } from './tickets/my-ticket/my-ticket.component';
 import { AllTicketComponent } from './tickets/all-ticket/all-ticket.component';
+import { MyactionComponent } from './tickets/myaction/myaction.component';
 
 
 @NgModule({
@@ -95,7 +96,8 @@ import { AllTicketComponent } from './tickets/all-ticket/all-ticket.component';
     DeviceListComponent,
     MonthlyTicketComponent,
     MyTicketComponent,
-    AllTicketComponent
+    AllTicketComponent,
+    MyactionComponent
   ],
   imports: [
     BrowserModule,
