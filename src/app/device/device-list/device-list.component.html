@@ -47,14 +47,14 @@
                                         <form class="form" [formGroup]="sortForm">
                                             <div class="col-sm-12 col-md-8">
                                                 <div class="dataTables_length" id="kt_datatable1_length"><label>Type:
-                                                            <select name="kt_datatable1_length" aria-controls="kt_datatable1"
+                                                            <select (change)="onChangeType()" name="kt_datatable1_length" aria-controls="kt_datatable1"
                                                                 class="custom-select custom-select-sm form-control form-control-sm"
                                                                 formControlName="type">
                                                                 <option [value]=""></option>
                                                                 <option *ngFor="let type of device_type; let i = index" [value]="device_type[i].value">{{type.name}}</option>
                                                             </select>
                     
-                                                            Result: count</label></div>
+                                                            Result: {{deviceCount}}</label></div>
                                             </div>
 
                                         </form>
@@ -86,7 +86,7 @@
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Created Date</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody *ngIf="deviceData">
+                                                <tbody *ngIf="loaded">
                                                     <tr *ngFor=" let data of deviceData | paginate:{itemsPerPage: 10, currentPage: p} ">
                                                         <td class="text-hover-primary" style="cursor: pointer;">{{data.device_id}}</td>
                                                         <td>{{data.type}}</td>

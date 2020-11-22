@@ -17,6 +17,8 @@ export class DeviceListComponent implements OnInit {
   searchForm : FormGroup;
   p : any;
   deviceData : any;
+  loaded: Boolean = false;
+  deviceCount = 0;
 
   device_type = [
     {id: 0, name : "Phone", value:"Phone"},
@@ -42,6 +44,8 @@ export class DeviceListComponent implements OnInit {
       if(res.status == "ok"){
         console.log(res.data);
         this.deviceData = res.data;
+        this.loaded = true;
+        this.countDevice();
       } else {
         console.log("Data not found");
       }
@@ -56,6 +60,35 @@ export class DeviceListComponent implements OnInit {
     this.searchForm = this.fb.group({
       str : [""]
     })
+  }
+
+  onChangeType(){
+    if(this.sortForm.controls["type"].value != ""){
+      this.ds.getDeviceByType(this.sortForm.controls["type"].value).toPromise()
+      .then((res:any)=>{
+        if(res.status == "ok"){
+          this.deviceData = res.data;
+          this.loaded = true;
+          this.countDevice();
+        } else {
+          console.log(res);
+          this.loaded = false;
+          this.countDevice();
+          //this.getDevices();
+          //this.countDevice();
+        }
+      })
+    } else {
+      this.getDevices();
+    }
+  }
+
+  countDevice(){
+    if(this.deviceData){
+      this.deviceCount = this.deviceData.length;
+    } else {
+      this.deviceCount = 0;
+    }
   }
 
   newDevice(){

@@ -28,6 +28,10 @@ export class DeviceService {
     return this.http.get<[]>(this.device_api+"/getdevice/"+id);
   }
 
+  getDeviceByType(type){
+    return this.http.get<[]>(this.device_api+"/getdevices/?type="+type);
+  }
+
   postDevice(obj){
     return this.http.post<[]>(this.device_api+"/newdevice/", obj)
     .pipe(
