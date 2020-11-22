@@ -13,6 +13,9 @@ import { DeviceListComponent } from './device/device-list/device-list.component'
 import { InsertPackageComponent } from './package/insert-package/insert-package.component';
 import { PackageViewComponent } from './package/package-view/package-view.component';
 import { PackageListComponent } from './package/package-list/package-list.component';
+import { AllTicketComponent } from './tickets/all-ticket/all-ticket.component';
+import { MonthlyTicketComponent } from './tickets/monthly-ticket/monthly-ticket.component';
+import { MyTicketComponent } from './tickets/my-ticket/my-ticket.component';
 
 const routes: Routes = [
   {path : '', component: NavComponent,
@@ -26,7 +29,10 @@ const routes: Routes = [
     {path : "devicelist", component: DeviceListComponent},
     {path : "insertpackage", component:InsertPackageComponent},
     {path : "viewpackage/:id", component: PackageViewComponent},
-    {path : "packagelist", component: PackageListComponent}
+    {path : "packagelist", component: PackageListComponent},
+    {path : "allticket", component:AllTicketComponent},
+    {path : "monthlyticket", component:MonthlyTicketComponent},
+    {path : "myticket", component:MyTicketComponent}
   ]
 },
 {path : "login", component:LoginComponent},
