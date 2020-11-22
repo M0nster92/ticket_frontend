@@ -4,6 +4,7 @@ import {
 } from '@angular/forms';
 import swal from 'sweetalert2';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
+import {DeviceService} from "../../services/device.service";
 
 @Component({
   selector: 'app-insert-device',
@@ -22,7 +23,8 @@ export class InsertDeviceComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    public dialogRef : MatDialogRef<InsertDeviceComponent>
+    public dialogRef : MatDialogRef<InsertDeviceComponent>,
+    private ds : DeviceService
   ) { }
 
   ngOnInit(): void {
@@ -37,6 +39,20 @@ export class InsertDeviceComponent implements OnInit {
       name : [""],
       type :[""]
     })
+  }
+
+  submit(){
+    if(this.deviceForm.valid){
+      this.ds.postDevice(this.deviceForm.getRawValue()).toPromise()
+      .then((res:any)=>{
+        if(res.status == "ok"){
+          swal.fire("","Device Inserted", "success");
+          this.dialogRef.close();
+        } else {
+          swal.fire("", "Failed! Try Again", "error");
+        }
+      })
+    }
   }
 
   close(){
