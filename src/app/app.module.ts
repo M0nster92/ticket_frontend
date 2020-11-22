@@ -60,6 +60,9 @@ import { InsertPackageComponent } from './package/insert-package/insert-package.
 import { PackageViewComponent } from './package/package-view/package-view.component';
 import { PackageListComponent } from './package/package-list/package-list.component';
 import { DeviceListComponent } from './device/device-list/device-list.component';
+import { MonthlyTicketComponent } from './tickets/monthly-ticket/monthly-ticket.component';
+import { MyTicketComponent } from './tickets/my-ticket/my-ticket.component';
+import { AllTicketComponent } from './tickets/all-ticket/all-ticket.component';
 
 
 @NgModule({
@@ -89,7 +92,10 @@ import { DeviceListComponent } from './device/device-list/device-list.component'
     InsertPackageComponent,
     PackageViewComponent,
     PackageListComponent,
-    DeviceListComponent
+    DeviceListComponent,
+    MonthlyTicketComponent,
+    MyTicketComponent,
+    AllTicketComponent
   ],
   imports: [
     BrowserModule,

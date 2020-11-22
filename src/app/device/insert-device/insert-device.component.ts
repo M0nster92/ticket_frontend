@@ -12,12 +12,19 @@ import swal from 'sweetalert2';
 export class InsertDeviceComponent implements OnInit {
 
   deviceForm : FormGroup;
+  device_type = [
+    {id: 0, name : "Phone", value:"phone"},
+    {id: 1, name: "Router", value:"router"},
+    {id: 2, name:"Modem", value:"modem"},
+    {id: 3, name:"Wifi Extender", value : "wifi_extender"}
+  ]
 
   constructor(
     private fb: FormBuilder
   ) { }
 
   ngOnInit(): void {
+    this.formInit();
   }
 
   formInit(){
@@ -25,7 +32,8 @@ export class InsertDeviceComponent implements OnInit {
       serial : [""],
       model : [""],
       mac: [""],
-      name : [""]
+      name : [""],
+      type :[""]
     })
   }
 
