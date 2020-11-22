@@ -3,6 +3,7 @@ import {
 	FormGroup,FormControl,FormBuilder,Validator,Validators, FormArray, Form
 } from '@angular/forms';
 import swal from 'sweetalert2';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-insert-device',
@@ -20,7 +21,8 @@ export class InsertDeviceComponent implements OnInit {
   ]
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public dialogRef : MatDialogRef<InsertDeviceComponent>
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +37,10 @@ export class InsertDeviceComponent implements OnInit {
       name : [""],
       type :[""]
     })
+  }
+
+  close(){
+    this.dialogRef.close();
   }
 
 }
