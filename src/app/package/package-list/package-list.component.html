@@ -41,17 +41,14 @@
                                 <!--begin: Datatable-->
                                 <div id="kt_datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
                                     <div class="row">
-                                        <!--<div class="col-sm-12 col-md-6">
-                                                <div class="dataTables_length" id="kt_datatable_length"><label>Show <select name="kt_datatable_length" aria-controls="kt_datatable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
-                                            </div> -->
-                                        <!-- <form class="form" [formGroup]="sortForm">
+                                        <form class="form" [formGroup]="sortForm">
                                             <div class="col-sm-12 col-md-8">
                                                 <div class="dataTables_length" id="kt_datatable1_length"><label>Type:
                                                             <select (change)="onChangeType()" name="kt_datatable1_length" aria-controls="kt_datatable1"
                                                                 class="custom-select custom-select-sm form-control form-control-sm"
                                                                 formControlName="type">
                                                                 <option [value]=""></option>
-                                                                <option *ngFor="let type of account_types; let i = index" [value]="account_types[i].value">{{type.name}}</option>
+                                                                <option *ngFor="let type of package_type; let i = index" [value]="package_type[i].value">{{type.value}}</option>
                                                             </select>
                     
                                                             Result: count</label></div>
@@ -59,14 +56,17 @@
 
                                         </form>
 
-                                        <form class="form">
+                                        <form class="form" [formGroup]="searchForm">
                                             <div class="col-sm-12 col-md-12">
                                                 <div id="kt_datatable_filter" class="dataTables_filter"><label>Search Name:
                                                     <input formControlName="str" type="search" class="form-control form-control-sm" placeholder="" aria-controls="kt_datatable">
                                                     </label>
                                                 </div>
                                             </div>
-                                        </form> -->
+                                        </form>
+                                        <div class="col-sm-12">
+                                            <button style="float: right;" class="btn btn-light-primary font-weight-bold mr-2" (click)="newPackage()">New Package</button>
+                                        </div>
 
                                     </div>
                                     <div class="row">
@@ -75,12 +75,12 @@
                                                 <thead>
 
                                                     <tr role="row">
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Account ID</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Package ID</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Type</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">First Name</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Last Name</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Phone</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Address</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Name</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Price</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Status</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Customer Count</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Created</th>
                                                     </tr>
                                                 </thead>
