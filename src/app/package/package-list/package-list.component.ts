@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,FormControl,FormBuilder,Validator,Validators, FormArray
   } from '@angular/forms';
-  import {PackageService} from "../../services/package.service";
+import {PackageService} from "../../services/package.service";
+import {MatTableDataSource, MatDialog, MatDialogModule, MatDialogConfig} from '@angular/material';
+import {InsertPackageComponent} from "../insert-package/insert-package.component";
 
 @Component({
   selector: 'app-package-list',
@@ -21,7 +23,8 @@ export class PackageListComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private ps : PackageService
+    private ps : PackageService,
+    private dialog : MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -63,7 +66,12 @@ export class PackageListComponent implements OnInit {
   }
 
   newPackage(){
-    
+    const NewPackageConfig = new MatDialogConfig();
+    NewPackageConfig.autoFocus = true;
+    NewPackageConfig.width = "60%";
+    this.dialog.open(InsertPackageComponent, NewPackageConfig)
+    .afterClosed()
+    .subscribe(()=> this.ngOnInit());
   }
 
 }
