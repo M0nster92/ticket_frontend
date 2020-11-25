@@ -64,6 +64,7 @@ export class DeviceListComponent implements OnInit {
 
   onChangeType(){
     if(this.sortForm.controls["type"].value != ""){
+      this.deviceData = [];
       this.ds.getDeviceByType(this.sortForm.controls["type"].value).toPromise()
       .then((res:any)=>{
         if(res.status == "ok"){

@@ -22,10 +22,20 @@ export class PackageService {
   }
 
   newPackage(obj){
+	  console.log(obj);
     return this.http.post<[]>(this.package_api+"/newpackage/", obj);
   }
 
   updatePackage(id, obj){
     return this.http.post<[]>(this.package_api+"/updatepackage/"+id, obj);
+  }
+  
+  getPackageByType(type){
+    console.log(type);
+	  return this.http.get<[]>(this.package_api+"/getpackages/?category="+type);
+  }
+
+  getPackageByString(str){
+    return this.http.get<[]>(this.package_api+"/searchpackage/"+str)
   }
 }

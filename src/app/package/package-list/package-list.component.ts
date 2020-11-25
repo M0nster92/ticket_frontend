@@ -20,6 +20,10 @@ export class PackageListComponent implements OnInit {
     {id: 1, name: "TV", value:"TV"},
     {id: 2, name:"Phone", value:"Phone"}
   ];
+  p : any;
+  loaded: Boolean = false;
+  packageCount = 0;
+  packageData : any;
 
   constructor(
     private fb: FormBuilder,
@@ -36,7 +40,10 @@ export class PackageListComponent implements OnInit {
     this.ps.getAllPackages().toPromise()
     .then((res:any)=>{
       if(res.status == "ok"){
-        console.log(res.data);
+      this.packageData = res.data;
+      this.loaded = true;
+      console.log(this.packageData);
+      this.countPackage();
       } else {
         console.log(res);
       }
@@ -54,15 +61,47 @@ export class PackageListComponent implements OnInit {
   }
 
   onChangeType(){
-
+	  if(this.sortForm.controls["type"].value != ""){
+      this.packageData = [];
+		  this.ps.getPackageByType(this.sortForm.controls["type"].value).toPromise()
+		  .then((res:any)=>{
+			  if(res.status == "ok"){
+				  this.packageData = res.data;
+				  this.loaded = true;
+				  this.countPackage();
+			  } else {
+				  console.log(res);
+				  this.loaded = false;
+				  this.countPackage();
+			  }
+		  })
+	  } else {
+		  this.getPackages();
+	  }
   }
 
   countPackage(){
-
+	  if(this.packageData){
+		  this.packageCount = this.packageData.length;
+	  } else {
+      this.packageCount = 0;
+    }
   }
 
-  onSearchString(){
-
+  onSearchString(event){
+    if(event.target.value.length > 2 ){
+      console.log(event.target.value);
+      this.packageData = [];
+      this.ps.getPackageByString(event.target.value).toPromise()
+      .then((res:any)=>{
+        if(res.status == "ok"){
+          this.packageData = res.data;
+          this.countPackage();
+        }
+      })
+    } else {
+      this.getPackages();
+    }
   }
 
   newPackage(){

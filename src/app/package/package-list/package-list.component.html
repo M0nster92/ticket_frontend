@@ -51,7 +51,7 @@
                                                                 <option *ngFor="let type of package_type; let i = index" [value]="package_type[i].value">{{type.value}}</option>
                                                             </select>
                     
-                                                            Result: count</label></div>
+                                                            Result: {{packageCount}}</label></div>
                                             </div>
 
                                         </form>
@@ -79,21 +79,18 @@
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Type</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Name</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Price</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Status</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Customer Count</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Created</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <!--<tr *ngFor=" let data of accountList | paginate:{itemsPerPage: 10, currentPage: p} "> -->
-                                                    <tr>
-                                                        <td class="text-hover-primary" style="cursor: pointer;">code</td>
-                                                        <td>type</td>
-                                                        <td>first name</td>
-                                                        <td>last name</td>
-                                                        <td>mobile phone</td>
-                                                        <td>street</td>
-                                                        <td>date</td>
+                                                <tbody *ngIf="loaded">
+                                                    <tr *ngFor=" let data of packageData | paginate:{itemsPerPage: 10, currentPage: p} ">
+                                                        <td class="text-hover-primary" style="cursor: pointer;">{{data.package_id}}</td>
+                                                        <td>{{data.category}}</td>
+                                                        <td>{{data.name}}</td>
+                                                        <td>{{data.price}}</td>
+                                                        <td>0</td>
+                                                        <td>{{data.created_date}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
