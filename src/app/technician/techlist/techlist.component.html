@@ -1,0 +1,126 @@
+<div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+    <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+        <!--begin::Info-->
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <div class="d-flex align-items-baseline flex-wrap mr-5">
+                <h5 class="text-dark font-weight-bold my-1 mr-5">Device List</h5>
+                <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                    <li class="breadcrumb-item">
+                        <a class="text-muted">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a class="text-muted">Device List</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="d-flex flex-column-fluid">
+    <div class="container">
+
+
+
+        <div class="card-body py-0">
+            <div id="kt_datatable1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="row">
+
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div>
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h3 class="card-label">Technician Table</h3>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <!--begin: Datatable-->
+                                <div id="kt_datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                    <div class="row">
+                                        <!--<div class="col-sm-12 col-md-6">
+                                                <div class="dataTables_length" id="kt_datatable_length"><label>Show <select name="kt_datatable_length" aria-controls="kt_datatable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                                            </div> -->
+                                        <form class="form" [formGroup]="sortForm">
+                                            <div class="col-sm-12 col-md-8">
+                                                <div class="dataTables_length" id="kt_datatable1_length"><label>Type:
+                                                            <select (change)="onChangeType()" name="kt_datatable1_length" aria-controls="kt_datatable1"
+                                                                class="custom-select custom-select-sm form-control form-control-sm"
+                                                                formControlName="type">
+                                                                <option [value]=""></option>
+                                                                <option *ngFor="let type of device_type; let i = index" [value]="device_type[i].value">{{type.name}}</option>
+                                                            </select>
+                    
+                                                            Result: count</label></div>
+                                            </div>
+
+                                        </form>
+
+                                        <form class="form" [formGroup]="searchForm">
+                                            <div class="col-sm-10 col-md-12">
+                                                <div id="kt_datatable_filter" class="dataTables_filter"><label>Search Device:
+                                                    <input (input)="onSearchString($event)" type="search" formControlName="str" class="form-control form-control-sm" placeholder="Search" aria-controls="kt_datatable">
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <div class="col-sm-12">
+                                            <button style="float: right;" class="btn btn-light-primary font-weight-bold mr-2" (click)="newDevice()">New Device</button>
+                                        </div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-bordered table-hover table-checkable dataTable no-footer dtr-inline collapsed" id="kt_datatable" style="margin-top: 13px !important; width: 1229px;" role="grid" aria-describedby="kt_datatable_info">
+                                                <thead>
+
+                                                    <tr role="row">
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Device ID</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Type</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Name</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">MAC</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Serial</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Created Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody *ngIf="loaded">
+                                                    <tr *ngFor=" let data of deviceData | paginate:{itemsPerPage: 10, currentPage: p} ">
+                                                        <td class="text-hover-primary" style="cursor: pointer;">{{data.device_id}}</td>
+                                                        <td>{{data.type}}</td>
+                                                        <td>{{data.name}}</td>
+                                                        <td>{{data.mac}}</td>
+                                                        <td>{{data.serial}}</td>
+                                                        <td>{{data.created_date | date:'yyyy/MM/dd hh:mm a'}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-sm-12 col-md-6 ">
+                                            <div class="dataTables_paginate paging_simple_numbers " id="kt_datatable_paginate ">
+                                                <ul class="pagination " style="float: left;">
+                                                    <!--<li class="paginate_button page-item previous disabled " id="kt_datatable_previous "><a href="# " aria-controls="kt_datatable " data-dt-idx="0 " tabindex="0 " class="page-link "><i class="ki ki-arrow-back "></i></a></li>
+                                                        <li class="paginate_button page-item active "><a  aria-controls="kt_datatable " data-dt-idx="1 " tabindex="0 " class="page-link ">1</a></li>
+                                                        <li class="paginate_button page-item next " id="kt_datatable_next "><a href="# " aria-controls="kt_datatable " data-dt-idx="6 " tabindex="0 " class="page-link "><i class="ki ki-arrow-next "></i></a></li> -->
+                                                    <pagination-controls (pageChange)="p=$event "></pagination-controls>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end: Datatable-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--end: Datatable-->
+        </div>
+
+    </div>
+</div>

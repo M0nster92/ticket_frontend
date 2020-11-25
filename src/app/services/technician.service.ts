@@ -13,7 +13,7 @@ export class TechnicianService {
   ) { }
 
   getAllTechnician(){
-  	return this.http.get<[]>(this.technician_api+"/gettechnician");
+  	return this.http.get<[]>(this.technician_api+"/gettechnicians");
   }
 
   newTechnician(techObj){
@@ -22,5 +22,13 @@ export class TechnicianService {
 
   updateTechnician(techId, techObj){
   	return this.http.get<[]>(this.technician_api+"/updatetechnician/"+techId, techObj);
+  }
+
+  getTechByCategory(type){
+    return this.http.get<[]>(this.technician_api+"/gettechnicians/?category="+type);
+  }
+
+  getTechByStr(str){
+    return this.http.get<[]>(this.technician_api+"/searchtechnician/"+str);
   }
 }
