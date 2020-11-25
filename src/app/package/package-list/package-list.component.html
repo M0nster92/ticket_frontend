@@ -59,7 +59,7 @@
                                         <form class="form" [formGroup]="searchForm">
                                             <div class="col-sm-12 col-md-12">
                                                 <div id="kt_datatable_filter" class="dataTables_filter"><label>Search Package:
-                                                    <input formControlName="str" type="search" class="form-control form-control-sm" placeholder="" aria-controls="kt_datatable">
+                                                    <input (input)="onSearchString($event)" formControlName="str" type="search" class="form-control form-control-sm" placeholder="" aria-controls="kt_datatable">
                                                     </label>
                                                 </div>
                                             </div>

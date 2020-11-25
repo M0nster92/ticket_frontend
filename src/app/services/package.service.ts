@@ -31,7 +31,6 @@ export class PackageService {
   }
   
   getPackageByType(type){
-    console.log(type);
 	  return this.http.get<[]>(this.package_api+"/getpackages/?category="+type);
   }
 

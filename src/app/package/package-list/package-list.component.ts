@@ -89,7 +89,7 @@ export class PackageListComponent implements OnInit {
   }
 
   onSearchString(event){
-    if(event.target.value.length > 2 ){
+    if(event.target.value.length > 1 ){
       console.log(event.target.value);
       this.packageData = [];
       this.ps.getPackageByString(event.target.value).toPromise()
