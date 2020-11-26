@@ -17,7 +17,8 @@ export class TechnicianService {
   }
 
   newTechnician(techObj){
-  	return this.http.get<[]>(this.technician_api+"/newtechnician", techObj);
+    console.log("new technician object ", techObj);
+  	return this.http.post<[]>(this.technician_api+"/newtechnician", techObj);
   }
 
   updateTechnician(techId, techObj){

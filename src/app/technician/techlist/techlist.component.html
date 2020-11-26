@@ -33,7 +33,7 @@
                         <div>
                             <div class="card-header">
                                 <div class="card-title">
-                                    <h3 class="card-label">Technician Table</h3>
+                                    <h3 class="card-label">Technician Form</h3>
                                 </div>
 
                             </div>
@@ -68,7 +68,7 @@
                                             </div>
                                         </form>
                                         <div class="col-sm-12">
-                                            <button style="float: right;" class="btn btn-light-primary font-weight-bold mr-2" (click)="newDevice()">New Device</button>
+                                            <button style="float: right;" class="btn btn-light-primary font-weight-bold mr-2" (click)="newTechnician()">New Technician</button>
                                         </div>
 
                                     </div>
@@ -79,20 +79,18 @@
 
                                                     <tr role="row">
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Device ID</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Type</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Name</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">MAC</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Serial</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">User Name</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Display Name</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Extension</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Created Date</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody *ngIf="loaded">
-                                                    <tr *ngFor=" let data of deviceData | paginate:{itemsPerPage: 10, currentPage: p} ">
-                                                        <td class="text-hover-primary" style="cursor: pointer;">{{data.device_id}}</td>
-                                                        <td>{{data.type}}</td>
-                                                        <td>{{data.name}}</td>
-                                                        <td>{{data.mac}}</td>
-                                                        <td>{{data.serial}}</td>
+                                                    <tr *ngFor=" let data of techData | paginate:{itemsPerPage: 10, currentPage: p} ">
+                                                        <td class="text-hover-primary" style="cursor: pointer;">{{data.tech_id}}</td>
+                                                        <td>{{data.user}}</td>
+                                                        <td>{{data.display_name}}</td>
+                                                        <td>{{data.extension}}</td>
                                                         <td>{{data.created_date | date:'yyyy/MM/dd hh:mm a'}}</td>
                                                     </tr>
                                                 </tbody>

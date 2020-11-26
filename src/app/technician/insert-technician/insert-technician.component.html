@@ -1,1 +1,90 @@
-<p>insert-technician works!</p>
+<div class="subheader py-2 py-lg-6 subheader-solid" id="kt_subheader">
+    <div class="container-fluid d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+        <div class="d-flex align-items-center flex-wrap mr-1">
+            <div class="d-flex align-items-baseline flex-wrap mr-5">
+                <h5 class="text-dark font-weight-bold my-1 mr-5">New Technician</h5>
+                <ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+                    <li class="breadcrumb-item">
+                        <a class="text-muted">Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a class="text-muted">New Technician</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div>
+                <div class="card-header">
+                    <h3 class="card-title">Account Information</h3>
+                </div>
+                <!--begin::Form-->
+                <form class="form" [formGroup]="techForm">
+                    <div class="card-body">
+                        <div class="form-group row">
+                            <div class="col-lg-4">
+                                <label>User:</label>
+                                <input type="text" formControlName="user" class="form-control" placeholder="user">
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Display Name:</label>
+                                <input type="text" formControlName="display_name" class="form-control" placeholder="Display Name">
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Extension:</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                    </div>
+                                    <input type="text" formControlName="extension" class="form-control" placeholder="extension">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-row">
+                            <div class="col-lg-5">
+                                <span class="switch switch-brand">
+                                    <label for="exampleSelectd">Lab:</label>
+                                    <label style="margin-left: 10px;">
+                                        <input formControlName="lab"  type="checkbox" checked="checked" >
+                                        <span></span>
+                                </label>
+                                </span>
+                            </div>
+                            <div class="col-lg-5">
+                                <span class="switch switch-brand">
+                                    <label for="exampleSelectd">Field Service:  </label>
+                                    <label style="margin-left: 10px;">
+                                        <input formControlName="fieldService" type="checkbox" checked="checked" >
+                                        <span></span>
+                                </label>
+                                </span>
+                            </div>
+                            <div class="col-lg-5">
+                                <span class="switch switch-brand">
+                                    <label for="exampleSelectd">Phone Support:  </label>
+                                    <label style="margin-left: 10px;">
+                                        <input formControlName="phonesupport" type="checkbox" checked="checked" >
+                                        <span></span>
+                                </label>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="row">
+                            <div class="col-lg-4"></div>
+                            <div class="col-lg-8">
+                                <button type="button" class="btn btn-primary mr-2" style="float: right;" (click)="submit()">Submit</button>
+                                <button type="button" class="btn btn-secondary" style="float: right; margin-right: 10px;" (click)="close()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

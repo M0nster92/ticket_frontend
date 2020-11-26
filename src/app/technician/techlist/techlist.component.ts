@@ -46,6 +46,7 @@ export class TechlistComponent implements OnInit {
     .then((res:any)=>{
       if(res.status == "ok"){
         this.techData = res.data;
+        console.log(this.techData);
         this.loaded = true;
       } else {
       }
