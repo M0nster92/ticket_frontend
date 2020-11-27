@@ -1,0 +1,77 @@
+.info {
+    margin-top: 10px;
+}
+
+@media (max-width: 767px) {
+    .mar-se {
+        margin-top: 20px;
+    }
+}
+
+.p {
+    display: none;
+    overflow: hidden;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.s {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.91026px;
+    height: auto;
+}
+
+.box {
+    background-color: #FFCC55;
+    max-height: 0px;
+    overflow-y: hidden;
+    transition: ease-in-out 400ms max-height;
+}
+
+.box.opened {
+    max-height: 500px;
+    transition: ease-in-out 600ms max-height;
+}
+
+h4 {
+    font-weight: 800;
+    color: black;
+}
+
+table.data {
+    font-weight: 500;
+    font-size: 12px;
+    text-align: left;
+}
+
+.data th {
+    padding: 3px;
+}
+
+.data tr {
+    padding: 50px;
+}
+
+td.datalabel {
+    padding: 5px;
+    color: black;
+    width: 100px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 110%;
+}
+
+td.data {
+    padding: 5px;
+    color: gray;
+    font-weight: 500;
+}
+
+a:link {
+    color: gray;
+}
+
+a:visited {
+    color: gray;
+}

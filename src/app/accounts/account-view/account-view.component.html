@@ -44,7 +44,7 @@
                                 </a>
                             </div>
                             <div class="my-lg-0 my-3">
-                                <a href="#" class="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">Edit</a>
+                                <a href="#" class="btn btn-sm btn-light-info font-weight-bolder text-uppercase mr-3">Edit</a>
                                 <!--<a href="#" class="btn btn-sm btn-info font-weight-bolder text-uppercase">hire</a> -->
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                     <a href="#" class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                         <i class="flaticon2-new-email mr-2 font-size-lg"></i>{{AccountObj.email}}</a>
                                     <a href="#" class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                        <i class="flaticon2-calendar-3 mr-2 font-size-lg"></i>{{AccountObj.user_name}}</a>
+                                        <i class="flaticon2-calendar-3 mr-2 font-size-lg"></i>{{AccountObj.mobile_phone}}</a>
                                     <a href="#" class="text-dark-50 text-hover-primary font-weight-bold">
                                         <i class="flaticon2-placeholder mr-2 font-size-lg"></i>{{AccountObj.street}}<span>,  {{AccountObj.city}}</span> <span>, {{AccountObj.postal_code}}</span></a>
                                 </div>
@@ -68,17 +68,64 @@
                 <!--end::Details-->
                 <div class="separator separator-solid"></div>
                 <!--begin::Items-->
-                <div class="row" style="border: 1px solid red;">
-                    <div class="col-lg-6" style="border: 1px solid red;">
+                <div class="row">
+                    <div class="col-lg-6">
                         <div class="card card-custom card-border " style="margin-top: 20px; margin-bottom: 20px; ">
                             <div class="card-header ">
                                 <h3 class="card-title align-items-start flex-column ">
                                     <span class="card-title text-dark-50 font-weight-normal font-size-lg ">Subsctiption</span>
                                 </h3>
+                                <div class="card-toolbar ">
+
+                                    <a (click)="sub()" class="btn btn-icon btn-circle btn-sm btn-primary mr-1" data-card-tool="toggle" data-toggle="toggle" data-placement="top" title="" data-original-title="Toggle Card">
+                                        <i [ngClass]="subscription_option ? 'ki ki-arrow-down icon-nm' : 'ki ki-arrow-up icon-nm' "></i>
+                                    </a>
+                                </div>
                             </div>
                             <div class="card-scroll " style="height: 330px; ">
-                                <div class="card-body py-0 " style="margin-top: 10px; ">
+                                <div class="topbar bg-white" *ngIf="subscription_option">
+                                    <!--begin::Search-->
+                                    <!--<div class="dropdown" id="kt_quick_search_toggle">
+                                        <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">
+                                            <div class="btn btn-icon btn-shadow btn-lg btn-dropdown mr-1">
+                                                <button class="btn btn-secondary">Add Device</button>
+                                            </div>
+                                            <div class="btn btn-icon btn-shadow btn-lg btn-dropdown mr-1">
+                                                <i class=""></i>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="d-flex align-items-center">
+                                        <a (click)="subscriptionDevice()" class="btn btn-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Device</a>
+                                        <a (click)="subscriptionPackage()" class="btn btn-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Package</a>
+                                        <a (click)="subscriptionBilling()" class="btn btn-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Billing</a>
+                                        <a (click)="subscriptionBack()" class="btn btn-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Back</a>
+                                    </div>
+                                </div>
+                                <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_default">
                                     <div class="table-responsive ">
+                                        <span>Table</span>
+                                        <table class="table table-head-custom table-vertical-center " id="kt_advance_table_widget_2 ">
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_device">
+                                    <div class="table-responsive ">
+                                        <span>Device</span>
+                                        <table class="table table-head-custom table-vertical-center " id="kt_advance_table_widget_2 ">
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_package">
+                                    <div class="table-responsive ">
+                                        <span>package</span>
+                                        <table class="table table-head-custom table-vertical-center " id="kt_advance_table_widget_2 ">
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_billing">
+                                    <div class="table-responsive ">
+                                        <span>billing</span>
                                         <table class="table table-head-custom table-vertical-center " id="kt_advance_table_widget_2 ">
                                         </table>
                                     </div>
@@ -87,27 +134,25 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-6" style="border: 1px solid red;">
+                    <div class="col-lg-6">
                         <div class="card card-custom card-border " style="margin-top: 20px; margin-bottom: 20px; ">
                             <div class="card-header ">
                                 <h3 class="card-title align-items-start flex-column ">
-                                    <span class="card-title text-dark-50 font-weight-normal font-size-lg ">Subsctiption</span>
+                                    <span class="card-title text-dark-50 font-weight-normal font-size-lg ">Tickets</span>
                                 </h3>
-                            </div>
-                            <div class="card-scroll " style="height: 330px; ">
-                                <div class="card-body py-0 " style="margin-top: 10px; ">
-                                    <div class="table-responsive ">
-                                        <table class="table table-head-custom table-vertical-center " id="kt_advance_table_widget_2 ">
-                                        </table>
-                                    </div>
+                                <div class="card-toolbar ">
+                                    <button type="button " (click)="option()" class="btn btn-primary btn-shadow font-weight-bold mr-2 btn-pill">New Tickets</button>
                                 </div>
                             </div>
+                            <div class="card-scroll " style="height: 330px; ">
+
+
+                            </div>
                         </div>
+                        <!--begin::Items-->
                     </div>
-                    <!--begin::Items-->
                 </div>
+
+
             </div>
-
-
         </div>
-    </div>
