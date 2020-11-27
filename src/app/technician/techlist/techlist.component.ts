@@ -48,23 +48,27 @@ export class TechlistComponent implements OnInit {
         this.techData = res.data;
         console.log(this.techData);
         this.loaded = true;
+        this.countResult();
       } else {
       }
     })
   }
+  countResult(){
+    if(this.techData){
+      this.searchResult = this.techData.length;
+    } else {
+      this.searchResult = 0; 
+    }
+  }
 
-  onChangeType(){
-    if(this.sortForm.controls["type"].value != ""){
+  onSearchString(event:any){
+    if(event.target.value.length > 1){
+      console.log(event.target.value);
       this.techData = [];
-      this.ts.getTechByCategory(this.sortForm.controls["type"].value).toPromise()
+      this.ts.getTechByStr(event.target.value).toPromise()
       .then((res:any)=>{
         if(res.status == "ok"){
           this.techData = res.data;
-          this.loaded = true;
-          this.countResult();
-        } else {
-          console.log(res);
-          this.loaded = false;
           this.countResult();
         }
       })
@@ -73,18 +77,10 @@ export class TechlistComponent implements OnInit {
     }
   }
 
-  countResult(){
-
-  }
-
-  onSearchString(){
-
-  }
-
   newTechnician(){
     const newTech = new MatDialogConfig();
     newTech.autoFocus = true;
-    newTech.width = "60%";
+    newTech.width = "50%";
     this.dialog.open(InsertTechnicianComponent, newTech).afterClosed()
     .subscribe(()=> this.ngOnInit());
   }

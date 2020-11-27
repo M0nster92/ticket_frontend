@@ -12,6 +12,12 @@ import {TechnicianService} from "../../services/technician.service";
 export class InsertTechnicianComponent implements OnInit {
 
   techForm : FormGroup;
+  category = [
+    {id:0, name:"Phone", value:"phone"},
+    {id:1, name:"Customer Service", value : "customerservice"},
+    {id:2, name:"Tech Visit", value : "techvisit"},
+    {id:3, name:"Installation", value: "installation"}
+  ]
 
   constructor(
     private fb : FormBuilder,
