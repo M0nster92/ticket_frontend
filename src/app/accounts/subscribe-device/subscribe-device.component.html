@@ -1,1 +1,136 @@
-<p>subscribe-device works!</p>
+<div class="d-flex flex-column-fluid">
+    <div class="container">
+
+
+
+        <div class="card-body py-0">
+            <div id="kt_datatable1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="row">
+
+
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div>
+                            <div class="card-header">
+                                <div class="card-title">
+                                    <h3 class="card-label">Device Table</h3>
+                                </div>
+
+                            </div>
+                            <div class="card-body">
+                                <!--begin: Datatable-->
+                                <div id="kt_datatable_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                                    <div class="row">
+                                        <!--<div class="col-sm-12 col-md-6">
+                                                <div class="dataTables_length" id="kt_datatable_length"><label>Show <select name="kt_datatable_length" aria-controls="kt_datatable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
+                                            </div> -->
+                                        <form class="form" [formGroup]="sortForm">
+                                            <div class="col-sm-12 col-md-8">
+                                                <div class="dataTables_length" id="kt_datatable1_length"><label>Type:
+                                                            <select (change)="onChangeType()" name="kt_datatable1_length" aria-controls="kt_datatable1"
+                                                                class="custom-select custom-select-sm form-control form-control-sm"
+                                                                formControlName="type">
+                                                                <option [value]=""></option>
+                                                                <option *ngFor="let type of device_type; let i = index" [value]="device_type[i].value">{{type.name}}</option>
+                                                            </select>
+                    
+                                                            Result: {{deviceCount}}</label></div>
+                                            </div>
+
+                                        </form>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table class="table table-bordered table-hover table-checkable dataTable no-footer dtr-inline collapsed" id="kt_datatable" style="margin-top: 13px !important; width: 1229px;" role="grid" aria-describedby="kt_datatable_info">
+                                                <thead>
+
+                                                    <tr role="row">
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Device ID</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Type</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Name</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">MAC</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Serial</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody *ngIf="loaded">
+                                                    <tr *ngFor=" let data of deviceData | paginate:{itemsPerPage: 5, currentPage: p} ">
+                                                        <td class="text-hover-primary" style="cursor: pointer;">{{data.device_id}}</td>
+                                                        <td>{{data.type}}</td>
+                                                        <td>{{data.name}}</td>
+                                                        <td>{{data.mac}}</td>
+                                                        <td>{{data.serial}}</td>
+                                                        <td *ngIf="data.active">
+                                                            <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-11-19-154210/theme/html/demo1/dist/../src/media/svg/icons/Navigation/Check.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                    <polygon points="0 0 24 0 24 24 0 24"/>
+                                                                    <path d="M6.26193932,17.6476484 C5.90425297,18.0684559 5.27315905,18.1196257 4.85235158,17.7619393 C4.43154411,17.404253 4.38037434,16.773159 4.73806068,16.3523516 L13.2380607,6.35235158 C13.6013618,5.92493855 14.2451015,5.87991302 14.6643638,6.25259068 L19.1643638,10.2525907 C19.5771466,10.6195087 19.6143273,11.2515811 19.2474093,11.6643638 C18.8804913,12.0771466 18.2484189,12.1143273 17.8356362,11.7474093 L14.0997854,8.42665306 L6.26193932,17.6476484 Z" fill="#000000" fill-rule="nonzero" transform="translate(11.999995, 12.000002) rotate(-180.000000) translate(-11.999995, -12.000002) "/>
+                                                                </g>
+                                                            </svg><!--end::Svg Icon--></span>
+                                                        </td>
+                                                        <td *ngIf="!data.active">
+                                                            <div class="dropdown">
+                                                                <!--begin::Toggle-->
+                                                                <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px" aria-expanded="false">
+                                                                    <div class="btn btn-icon btn-clean btn-dropdown btn-lg mr-1">
+                                                                        <span class="svg-icon svg-icon-primary svg-icon-2x"><!--begin::Svg Icon | path:/var/www/preview.keenthemes.com/metronic/releases/2020-11-19-154210/theme/html/demo1/dist/../src/media/svg/icons/Navigation/Sign-in.svg--><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                                                                <rect x="0" y="0" width="24" height="24"/>
+                                                                                <rect fill="#000000" opacity="0.3" transform="translate(9.000000, 12.000000) rotate(-270.000000) translate(-9.000000, -12.000000) " x="8" y="6" width="2" height="12" rx="1"/>
+                                                                                <path d="M20,7.00607258 C19.4477153,7.00607258 19,6.55855153 19,6.00650634 C19,5.45446114 19.4477153,5.00694009 20,5.00694009 L21,5.00694009 C23.209139,5.00694009 25,6.7970243 25,9.00520507 L25,15.001735 C25,17.2099158 23.209139,19 21,19 L9,19 C6.790861,19 5,17.2099158 5,15.001735 L5,8.99826498 C5,6.7900842 6.790861,5 9,5 L10.0000048,5 C10.5522896,5 11.0000048,5.44752105 11.0000048,5.99956624 C11.0000048,6.55161144 10.5522896,6.99913249 10.0000048,6.99913249 L9,6.99913249 C7.8954305,6.99913249 7,7.89417459 7,8.99826498 L7,15.001735 C7,16.1058254 7.8954305,17.0008675 9,17.0008675 L21,17.0008675 C22.1045695,17.0008675 23,16.1058254 23,15.001735 L23,9.00520507 C23,7.90111468 22.1045695,7.00607258 21,7.00607258 L20,7.00607258 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" transform="translate(15.000000, 12.000000) rotate(-90.000000) translate(-15.000000, -12.000000) "/>
+                                                                                <path d="M16.7928932,9.79289322 C17.1834175,9.40236893 17.8165825,9.40236893 18.2071068,9.79289322 C18.5976311,10.1834175 18.5976311,10.8165825 18.2071068,11.2071068 L15.2071068,14.2071068 C14.8165825,14.5976311 14.1834175,14.5976311 13.7928932,14.2071068 L10.7928932,11.2071068 C10.4023689,10.8165825 10.4023689,10.1834175 10.7928932,9.79289322 C11.1834175,9.40236893 11.8165825,9.40236893 12.2071068,9.79289322 L14.5,12.0857864 L16.7928932,9.79289322 Z" fill="#000000" fill-rule="nonzero" transform="translate(14.500000, 12.000000) rotate(-90.000000) translate(-14.500000, -12.000000) "/>
+                                                                            </g>
+                                                                        </svg><!--end::Svg Icon--></span>
+                                                                    </div>
+                                                                </div>
+                                                                <!--end::Toggle-->
+                                                                <!--begin::Dropdown-->
+                                                                <div class="dropdown-menu p-0 m-0 dropdown-menu-anim-up dropdown-menu-sm dropdown-menu-right" style="">
+                                                                    <!--begin::Nav-->
+                                                                    <ul class="navi navi-hover py-2">
+                                                                        <!--begin::Item-->
+                                                                        <li class="navi-item">
+                                                                            <a class="navi-link" style="cursor: pointer;" (click)="submit()">
+
+                                                                                <span class="navi-text">Add</span>
+                                                                            </a>
+                                                                        </li>
+
+                                                                    </ul>
+                                                                    <!--end::Nav-->
+                                                                </div>
+                                                                <!--end::Dropdown-->
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-sm-12 col-md-6 ">
+                                            <div class="dataTables_paginate paging_simple_numbers " id="kt_datatable_paginate ">
+                                                <ul class="pagination " style="float: left;">
+                                                    <!--<li class="paginate_button page-item previous disabled " id="kt_datatable_previous "><a href="# " aria-controls="kt_datatable " data-dt-idx="0 " tabindex="0 " class="page-link "><i class="ki ki-arrow-back "></i></a></li>
+                                                        <li class="paginate_button page-item active "><a  aria-controls="kt_datatable " data-dt-idx="1 " tabindex="0 " class="page-link ">1</a></li>
+                                                        <li class="paginate_button page-item next " id="kt_datatable_next "><a href="# " aria-controls="kt_datatable " data-dt-idx="6 " tabindex="0 " class="page-link "><i class="ki ki-arrow-next "></i></a></li> -->
+                                                    <pagination-controls (pageChange)="p=$event "></pagination-controls>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end: Datatable-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--end: Datatable-->
+        </div>
+
+    </div>
+</div>

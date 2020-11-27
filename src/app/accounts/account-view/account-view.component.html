@@ -116,12 +116,14 @@
                                     </div>
                                 </div>
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_device">
+
                                     <div class="table-responsive ">
+                                        <button (click)="newDevice()" class="btn btn-light btn-shadow font-weight-bold mr-2 btn-pill" style="float: right;">New Device</button>
                                         <span>Device</span>
                                         <table class="data">
                                             <table class="table table-bordered">
                                                 <tr>
-                                                    <td class="datalabel font-weight-bold my-2">Package</td>
+                                                    <td class="datalabel font-weight-bold my-2"><i class="fa fa-caret-right" style="margin-right: 5px;"></i> Package</td>
                                                     <td class="data my-2">World</td>
                                                 </tr>
                                             </table>
@@ -130,6 +132,7 @@
                                 </div>
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_package">
                                     <div class="table-responsive ">
+                                        <button (click)="newPackage()" class="btn btn-light btn-shadow font-weight-bold mr-2 btn-pill" style="float: right;">New Package</button>
                                         <span>package</span>
                                         <table class="data">
                                             <table class="table table-bordered">

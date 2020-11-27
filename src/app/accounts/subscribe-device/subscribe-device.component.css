@@ -1,0 +1,7 @@
+.drop-down {
+    position: absolute;
+    transform: translate3d(-117px, 65px, 0px);
+    top: 0px;
+    left: 0px;
+    will-change: transform;
+}

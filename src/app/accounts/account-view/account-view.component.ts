@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AccountService} from "../../services/account.service";
+import {MatTableDataSource, MatDialog, MatDialogModule, MatDialogConfig} from '@angular/material';
+import {SubscribeDeviceComponent} from "../subscribe-device/subscribe-device.component";
+import {SubscribePackageComponent} from "../subscribe-package/subscribe-package.component";
 
 @Component({
   selector: 'app-account-view',
@@ -25,7 +28,8 @@ export class AccountViewComponent implements OnInit {
 
   constructor(
     private route : ActivatedRoute,
-    private as : AccountService
+    private as : AccountService,
+    private dialog : MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -84,6 +88,24 @@ export class AccountViewComponent implements OnInit {
     this.subscription_package  = false;
     this.subscription_billing  = false;
     this.subscription_default = true;
+  }
+
+  newDevice(){
+    const NewDeviceConfig = new MatDialogConfig();
+    NewDeviceConfig.autoFocus = true;
+    NewDeviceConfig.width = "60%";
+    this.dialog.open(SubscribeDeviceComponent, NewDeviceConfig)
+    .afterClosed()
+    .subscribe(()=>this.ngOnInit());
+  }
+
+  newPackage(){
+    const NewPackageConfig = new MatDialogConfig();
+    NewPackageConfig.autoFocus = true;
+    NewPackageConfig.width = "60%";
+    this.dialog.open(SubscribePackageComponent, NewPackageConfig)
+    .afterClosed()
+    .subscribe(()=>this.ngOnInit());
   }
 
 }
