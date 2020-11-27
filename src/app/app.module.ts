@@ -65,6 +65,8 @@ import { MyTicketComponent } from './tickets/my-ticket/my-ticket.component';
 import { AllTicketComponent } from './tickets/all-ticket/all-ticket.component';
 import { MyactionComponent } from './tickets/myaction/myaction.component';
 import { TechlistComponent } from './technician/techlist/techlist.component';
+import { SubscribePackageComponent } from './accounts/subscribe-package/subscribe-package.component';
+import { SubscribeDeviceComponent } from './accounts/subscribe-device/subscribe-device.component';
 
 
 @NgModule({
@@ -99,7 +101,9 @@ import { TechlistComponent } from './technician/techlist/techlist.component';
     MyTicketComponent,
     AllTicketComponent,
     MyactionComponent,
-    TechlistComponent
+    TechlistComponent,
+    SubscribePackageComponent,
+    SubscribeDeviceComponent
   ],
   imports: [
     BrowserModule,

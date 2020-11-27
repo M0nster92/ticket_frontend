@@ -73,7 +73,7 @@
                         <div class="card card-custom card-border " style="margin-top: 20px; margin-bottom: 20px; ">
                             <div class="card-header ">
                                 <h3 class="card-title align-items-start flex-column ">
-                                    <span class="card-title text-dark-50 font-weight-normal font-size-lg ">Subsctiption</span>
+                                    <span class="card-title text-dark-50 font-weight-normal font-size-lg ">Subscription</span>
                                 </h3>
                                 <div class="card-toolbar ">
 
@@ -96,37 +96,61 @@
                                         </div>
                                     </div> -->
                                     <div class="d-flex align-items-center">
-                                        <a (click)="subscriptionDevice()" class="btn btn-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Device</a>
-                                        <a (click)="subscriptionPackage()" class="btn btn-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Package</a>
-                                        <a (click)="subscriptionBilling()" class="btn btn-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Billing</a>
-                                        <a (click)="subscriptionBack()" class="btn btn-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Back</a>
+                                        <a (click)="subscriptionDevice()" class="btn btn-hover-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Device</a>
+                                        <a (click)="subscriptionPackage()" class="btn btn-hover-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Package</a>
+                                        <a (click)="subscriptionBilling()" class="btn btn-hover-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Billing</a>
+                                        <a (click)="subscriptionBack()" class="btn btn-hover-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Back</a>
                                     </div>
                                 </div>
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_default">
-                                    <div class="table-responsive ">
+                                    <div class="table-responsive">
                                         <span>Table</span>
-                                        <table class="table table-head-custom table-vertical-center " id="kt_advance_table_widget_2 ">
+                                        <table class="data">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <td class="datalabel font-weight-bold my-2">Package</td>
+                                                    <td class="data my-2">World</td>
+                                                </tr>
+                                            </table>
                                         </table>
                                     </div>
                                 </div>
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_device">
                                     <div class="table-responsive ">
                                         <span>Device</span>
-                                        <table class="table table-head-custom table-vertical-center " id="kt_advance_table_widget_2 ">
+                                        <table class="data">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <td class="datalabel font-weight-bold my-2">Package</td>
+                                                    <td class="data my-2">World</td>
+                                                </tr>
+                                            </table>
                                         </table>
                                     </div>
                                 </div>
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_package">
                                     <div class="table-responsive ">
                                         <span>package</span>
-                                        <table class="table table-head-custom table-vertical-center " id="kt_advance_table_widget_2 ">
+                                        <table class="data">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <td class="datalabel font-weight-bold my-2">Package</td>
+                                                    <td class="data my-2">World</td>
+                                                </tr>
+                                            </table>
                                         </table>
                                     </div>
                                 </div>
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_billing">
                                     <div class="table-responsive ">
                                         <span>billing</span>
-                                        <table class="table table-head-custom table-vertical-center " id="kt_advance_table_widget_2 ">
+                                        <table class="data">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <td class="datalabel font-weight-bold my-2">Package</td>
+                                                    <td class="data my-2">World</td>
+                                                </tr>
+                                            </table>
                                         </table>
                                     </div>
                                 </div>
