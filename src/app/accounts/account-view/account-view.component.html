@@ -116,18 +116,22 @@
                                     </div>
                                 </div>
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_device">
-
+                                    <button (click)="newDevice()" class="btn btn-light font-weight-bold mr-2 btn-pill" style="float: right;">New Device</button>
                                     <div class="table-responsive ">
-                                        <button (click)="newDevice()" class="btn btn-light btn-shadow font-weight-bold mr-2 btn-pill" style="float: right;">New Device</button>
-                                        <span>Device</span>
-                                        <table class="data">
+                                        <span>    </span>
+                                        <table class="data" *ngIf="deviceList">
                                             <table class="table table-bordered">
-                                                <tr>
-                                                    <td class="datalabel font-weight-bold my-2"><i class="fa fa-caret-right" style="margin-right: 5px;"></i> Package</td>
-                                                    <td class="data my-2">World</td>
+                                                <tr *ngFor="let device of deviceList">
+                                                    <td class="datalabel font-weight-bold my-2"><i class="fa fa-caret-right" style="margin-right: 5px;"></i> Name</td>
+                                                    <td class="data my-2">{{device.device_name}}</td>
                                                 </tr>
                                             </table>
                                         </table>
+
+                                        <div *ngIf="deviceList == null">
+                                            <p>No Device Found</p>
+                                        </div>
+
                                     </div>
                                 </div>
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_package">
