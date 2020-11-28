@@ -83,9 +83,20 @@ export class SubscribeDeviceComponent implements OnInit {
     this.as.subscribeDevice(subscribeObj).toPromise()
     .then((res:any)=>{
       if(res.status == "ok"){
-        Swal.fire("","Device Assigned", "success");
+        
+        val.active = true;
+        val.account_code = this.accountData.account_code;
+        this.ds.updateDevice(val.device_id,val).toPromise()
+        .then((res:any)=>{
+          if(res.status == "ok"){
+            Swal.fire("","Device Assigned", "success");
+          } else {
+            Swal.fire("", "Failed! Try Again", "error");
+          }
+          
+        })
       } else {
-        Swal.fire("", "Failed! Try Again", "error");
+        
       }
     })
   }
