@@ -44,6 +44,7 @@ export class AccountViewComponent implements OnInit {
   getAccount(){
     this.as.getAccount(this.AccountID).toPromise()
     .then((res:any)=>{
+      console.log(res);
       if(res.status == "ok"){
         this.AccountObj = res.data;
         this.fullName = this.AccountObj.first_name + " "+ this.AccountObj.last_name;
@@ -94,6 +95,7 @@ export class AccountViewComponent implements OnInit {
     const NewDeviceConfig = new MatDialogConfig();
     NewDeviceConfig.autoFocus = true;
     NewDeviceConfig.width = "60%";
+    NewDeviceConfig.data = this.AccountObj;
     this.dialog.open(SubscribeDeviceComponent, NewDeviceConfig)
     .afterClosed()
     .subscribe(()=>this.ngOnInit());
@@ -103,6 +105,7 @@ export class AccountViewComponent implements OnInit {
     const NewPackageConfig = new MatDialogConfig();
     NewPackageConfig.autoFocus = true;
     NewPackageConfig.width = "60%";
+    NewPackageConfig.data = this.AccountObj;
     this.dialog.open(SubscribePackageComponent, NewPackageConfig)
     .afterClosed()
     .subscribe(()=>this.ngOnInit());

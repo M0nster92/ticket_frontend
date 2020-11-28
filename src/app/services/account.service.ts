@@ -41,4 +41,8 @@ export class AccountService implements OnInit {
     return this.http.get<[]>(this.account_api+"/getaccount/"+val);
   }
 
+  subscribeDevice(val){
+    return this.http.post<[]>(this.account_api+"/newdevicesubscribe", val);
+  }
+
 }

@@ -37,7 +37,8 @@ export class InsertDeviceComponent implements OnInit {
       model : [""],
       mac: [""],
       name : [""],
-      type :[""]
+      type :[""],
+      price : [null]
     })
   }
 

@@ -1,5 +1,6 @@
 <div class="d-flex flex-column-fluid">
     <div class="container">
+        <span style="float: right; cursor: pointer;"><i class="icon text-danger flaticon2-delete text-hover-primary" (click)="close()"></i></span>
 
 
 
@@ -92,9 +93,9 @@
                                                                     <ul class="navi navi-hover py-2">
                                                                         <!--begin::Item-->
                                                                         <li class="navi-item">
-                                                                            <a class="navi-link" style="cursor: pointer;" (click)="submit()">
+                                                                            <a class="navi-link" style="cursor: pointer;">
 
-                                                                                <span class="navi-text">Add</span>
+                                                                                <span class="navi-text" (click)=submit(data)>Add</span>
                                                                             </a>
                                                                         </li>
 
