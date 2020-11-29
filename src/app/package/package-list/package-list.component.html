@@ -50,7 +50,7 @@
                                                                 <option [value]=""></option>
                                                                 <option *ngFor="let type of package_type; let i = index" [value]="package_type[i].value">{{type.value}}</option>
                                                             </select>
-                    
+
                                                             Result: {{packageCount}}</label></div>
                                             </div>
 
@@ -90,7 +90,7 @@
                                                         <td>{{data.name}}</td>
                                                         <td>{{data.price}}</td>
                                                         <td>0</td>
-                                                        <td>{{data.created_date}}</td>
+                                                        <td>{{data.created_date | date:'yyyy/MM/dd hh:mm a'}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

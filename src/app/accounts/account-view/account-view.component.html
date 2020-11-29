@@ -146,17 +146,31 @@
                                     </div>
                                 </div>
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_package">
-                                    <div class="table-responsive ">
-                                        <button (click)="newPackage()" class="btn btn-light btn-shadow font-weight-bold mr-2 btn-pill" style="float: right;">New Package</button>
-                                        <span>package</span>
-                                        <table class="data">
-                                            <table class="table table-bordered">
-                                                <tr>
-                                                    <td class="datalabel font-weight-bold my-2">Package</td>
-                                                    <td class="data my-2">World</td>
-                                                </tr>
-                                            </table>
-                                        </table>
+                                  <button (click)="newPackage()" class="btn btn-light font-weight-bold mr-2" style="float: right;">New Package</button>
+                                    <div class="table-responsive " *ngIf="packageList">
+                                        <tr *ngFor = "let package of packageList">
+                                          <table class="data">
+                                              <table class="table table-bordered">
+                                                  <tr>
+                                                      <td class="datalabel font-weight-bold my-2">Name</td>
+                                                      <td class="data my-2">{{package.package_name}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                    <td class="datalabel font-weight-bold my-2">Price</td>
+                                                    <td class="data my-2">{{package.price}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td class="datalabel font-weight-bold my-2">Package code</td>
+                                                      <td class="data my-2">{{package.package_code}}</td>
+                                                  </tr>
+                                                  <tr>
+                                                      <td class="datalabel font-weight-bold my-2">Start</td>
+                                                      <td class="data my-2">{{package.start_date | date:'yyyy/MM/dd hh:mm a'}}</td>
+                                                  </tr>
+                                              </table>
+                                          </table>
+                                        </tr>
+
                                     </div>
                                 </div>
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_billing">

@@ -18,6 +18,7 @@ export class AccountViewComponent implements OnInit {
   fullName : any;
   options: Boolean = false;
   deviceList : any;
+  packageList : any;
 
 
   //subscription_table boolean
@@ -49,7 +50,7 @@ export class AccountViewComponent implements OnInit {
       if(res.status == "ok"){
         this.AccountObj = res.data;
         this.fullName = this.AccountObj.first_name + " "+ this.AccountObj.last_name;
-        
+        this.packageList = res.packages;
         this.deviceList = res.devices;
         this.loaded = true;
         //console.log(this.AccountObj);
@@ -58,7 +59,7 @@ export class AccountViewComponent implements OnInit {
   }
 
   option(){
-    
+
   }
 
   sub() {
