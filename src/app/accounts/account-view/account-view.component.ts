@@ -4,6 +4,7 @@ import {AccountService} from "../../services/account.service";
 import {MatTableDataSource, MatDialog, MatDialogModule, MatDialogConfig} from '@angular/material';
 import {SubscribeDeviceComponent} from "../subscribe-device/subscribe-device.component";
 import {SubscribePackageComponent} from "../subscribe-package/subscribe-package.component";
+import {InsertTicketComponent} from "../../tickets/insert-ticket/insert-ticket.component";
 
 @Component({
   selector: 'app-account-view',
@@ -113,6 +114,16 @@ export class AccountViewComponent implements OnInit {
     this.dialog.open(SubscribePackageComponent, NewPackageConfig)
     .afterClosed()
     .subscribe(()=>this.ngOnInit());
+  }
+
+  newTicket(){
+    const newTicketConfig = new MatDialogConfig();
+    newTicketConfig.autoFocus = true;
+    newTicketConfig.width = "90%";
+    newTicketConfig.data = this.AccountObj;
+    this.dialog.open(InsertTicketComponent, newTicketConfig)
+    .afterClosed()
+    .subscribe(()=> this.ngOnInit());
   }
 
 }
