@@ -34,7 +34,7 @@ export class SubscribeDeviceComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data,
     private matdialogRef : MatDialogRef<SubscribeDeviceComponent>,
     private as : AccountService
-  ) { 
+  ) {
     this.accountData = data;
 
     console.log(this.accountData);
@@ -56,7 +56,7 @@ export class SubscribeDeviceComponent implements OnInit {
     .then((res:any)=>{
       if(res.status == "ok"){
         this.deviceData = res.data;
-        
+
         this.loaded = true;
       } else {
         console.log("Data not found");
@@ -65,7 +65,20 @@ export class SubscribeDeviceComponent implements OnInit {
   }
 
   onChangeType(){
-
+    if(this.sortForm.controls["type"].value != ""){
+      this.deviceData = [];
+      this.ds.getDeviceByType(this.sortForm.controls["type"].value).toPromise()
+      .then((res:any)=>{
+        if(res.status == "ok"){
+          this.deviceData = res.data;
+          this.loaded = true;
+        } else {
+          this.loaded = false;
+        }
+      })
+    } else {
+      this.getDevices();
+    }
   }
 
   submit(val){
@@ -83,20 +96,21 @@ export class SubscribeDeviceComponent implements OnInit {
     this.as.subscribeDevice(subscribeObj).toPromise()
     .then((res:any)=>{
       if(res.status == "ok"){
-        
+
         val.active = true;
         val.account_code = this.accountData.account_code;
         this.ds.updateDevice(val.device_id,val).toPromise()
         .then((res:any)=>{
           if(res.status == "ok"){
             Swal.fire("","Device Assigned", "success");
+						this.matdialogRef.close();
           } else {
             Swal.fire("", "Failed! Try Again", "error");
           }
-          
+
         })
       } else {
-        
+
       }
     })
   }

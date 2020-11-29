@@ -51,11 +51,11 @@
                         <div class="d-flex flex-wrap justify-content-between mt-1">
                             <div class="d-flex flex-column flex-grow-1 pr-8">
                                 <div class="d-flex flex-wrap mb-4">
-                                    <a href="#" class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                    <a class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                         <i class="flaticon2-new-email mr-2 font-size-lg"></i>{{AccountObj.email}}</a>
-                                    <a href="#" class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
+                                    <a class="text-dark-50 text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                         <i class="flaticon2-calendar-3 mr-2 font-size-lg"></i>{{AccountObj.mobile_phone}}</a>
-                                    <a href="#" class="text-dark-50 text-hover-primary font-weight-bold">
+                                    <a class="text-dark-50 text-hover-primary font-weight-bold">
                                         <i class="flaticon2-placeholder mr-2 font-size-lg"></i>{{AccountObj.street}}<span>,  {{AccountObj.city}}</span> <span>, {{AccountObj.postal_code}}</span></a>
                                 </div>
 
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                             <div class="card-scroll " style="height: 330px; ">
-                                <div class="topbar bg-white" *ngIf="subscription_option">
+                                <div class="topbar" style="border: 3px solid #efebe9;" *ngIf="subscription_option">
                                     <!--begin::Search-->
                                     <!--<div class="dropdown" id="kt_quick_search_toggle">
                                         <div class="topbar-item" data-toggle="dropdown" data-offset="10px,0px">

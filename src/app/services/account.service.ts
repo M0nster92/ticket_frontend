@@ -45,4 +45,9 @@ export class AccountService implements OnInit {
     return this.http.post<[]>(this.account_api+"/newdevicesubscribe", val);
   }
 
+  subscribeProduct(val){
+    console.log(val);
+    return this.http.post<[]>(this.account_api+"/newpackagesubscribe", val);
+  }
+
 }
