@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validator,Validators, FormArray, F
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import Swal from 'sweetalert2';
 import {TechnicianService} from "../../services/technician.service";
+import {TicketService} from "../../services/ticket.service";
 
 @Component({
   selector: 'app-insert-technician',
@@ -22,7 +23,8 @@ export class InsertTechnicianComponent implements OnInit {
   constructor(
     private fb : FormBuilder,
     private dialogRef : MatDialogRef<InsertTechnicianComponent>,
-    private ts : TechnicianService
+    private ts : TicketService,
+    private tech : TechnicianService
   ) { }
 
   ngOnInit(): void {
@@ -43,7 +45,7 @@ export class InsertTechnicianComponent implements OnInit {
 
   submit(){
     if(this.techForm.valid){
-      this.ts.newTechnician(this.techForm.getRawValue()).toPromise()
+      this.tech.newTechnician(this.techForm.getRawValue()).toPromise()
       .then((res:any)=>{
         if(res.status == "ok"){
           Swal.fire("", "Technician Inserted", "success");

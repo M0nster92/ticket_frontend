@@ -5,6 +5,8 @@ import Swal from "sweetalert2";
 import 
 {MatTableDataSource, MatDialog, MatDialogModule, MatDialogConfig, 
 MAT_DIALOG_DATA,MatDialogRef } from "@angular/material";
+import {UserService} from "../../services/user.service";
+import {TechnicianService} from "../../services/technician.service";
  
 @Component({
   selector: 'app-insert-ticket',
@@ -15,12 +17,25 @@ export class InsertTicketComponent implements OnInit {
 
   accountData : any;
   ticketForm : FormGroup;
+  sessionData : any;
+  technicianList : any;
+
+  issues : [
+	  {id:0, name : "Service Down", value:"servicedown"},
+	  {id:1, name : "Phone", value : "phone"},
+	  {id:2, name: "Channel Problem", value : "channelproblem"},
+	  {id:3, name : "Troubleshoot", value :"troubleshoot"}
+  ]
+
+  
  
   constructor(
   	private fb : FormBuilder,
   	private as : AccountService,
   	private matDialogRef : MatDialogRef <InsertTicketComponent>,
-  	@Inject (MAT_DIALOG_DATA) data
+	  @Inject (MAT_DIALOG_DATA) data,
+	  private us : UserService,
+	  private tech : TechnicianService
   ) {
   	this.accountData = data;
 
@@ -28,7 +43,10 @@ export class InsertTicketComponent implements OnInit {
    }
 
   ngOnInit(): void {
-  	this.formInit();
+	  this.formInit();
+	  this.sessionData = this.us.newSession();
+	  console.log(this.sessionData);
+	  this.getTechnicians();
   }
 
   formInit(){
@@ -40,12 +58,39 @@ export class InsertTicketComponent implements OnInit {
   		status : ["open"],
   		assigned_user : [""],
   		created_user : [""],
-  		notes : [""]
+		notes : [""],
+		priority : [""]  
   	})
+  }
+  getTechnicians(){
+    this.tech.getAllTechnician().toPromise()
+    .then((res:any)=>{
+      if(res.status == "ok"){
+        this.technicianList = res.data;
+        console.log(this.technicianList);
+      } else {
+
+      }
+    })
   }
 
   submit(){
-  
+	  if(this.ticketForm.valid){
+		  let ticketObj = {
+			  account_code : this.accountData.account_code,
+			  first_name : this.accountData.first_name,
+			  last_name: this.accountData.last_name,
+			  priority: this.ticketForm.controls["priority"].value ,
+			  status : this.ticketForm.controls["status"].value,
+			  assigned_user : this.ticketForm.controls["assigned_user"].value,
+			  assigned_date : new Date().toISOString(),
+			  created_user : this.sessionData.user.user_name,
+			  created_date : new Date().toISOString(),
+			  notes : this.ticketForm.controls["notes"].value
+		  }
+
+		  console.log(ticketObj);
+	  }
   }
 
 }

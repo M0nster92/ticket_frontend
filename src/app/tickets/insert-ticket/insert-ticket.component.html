@@ -10,7 +10,7 @@
                 <a class="btn btn-light-primary font-weight-bolder mr-2">
                     <i class="ki ki-long-arrow-back icon-xs"></i>Back</a>
                 <div class="btn-group">
-                    <button type="button" class="btn btn-primary font-weight-bolder">
+                    <button (click)="submit()" type="button" class="btn btn-primary font-weight-bolder">
                     <i class="ki ki-check icon-xs"></i>Save Form</button>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                                 <div class="form-group row">
                                     <label class="col-3">Issue</label>
                                     <div class="col-9">
-                                        <select class="form-control">
+                                        <select formControlName="issue" class="form-control">
                                             <option value="AF">Afghanistan</option>
                                             <option value="AX">Åland Islands</option>
                                         </select>
@@ -36,13 +36,13 @@
                                 <div class="form-group row">
                                     <label class="col-3">Subject</label>
                                     <div class="col-9">
-                                        <input class="form-control" type="text">
+                                        <input formControlName="subject" class="form-control" type="text">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label class="col-3">Assigned User: </label>
                                     <div class="col-9">
-                                        <select class="form-control">
+                                        <select formControlName="assigned_user" class="form-control">
                                             <option value="AF">Afghanistan</option>
                                             <option value="AX">Åland Islands</option>
                                         </select>
@@ -51,8 +51,17 @@
                                 <div class="form-group row">
                                     <label class="col-3">Notes</label>
                                     <div class="col-9">
-                                        <textarea class="form-control" type="text"></textarea>
+                                        <textarea formControlName="notes" class="form-control" type="text"></textarea>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-3">Priority: </label>
+                                <div class="col-9">
+                                    <select formControlName="priority" class="form-control">
+                                        <option value="AF">Afghanistan</option>
+                                        <option value="AX">Åland Islands</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="separator separator-dashed my-10"></div>
