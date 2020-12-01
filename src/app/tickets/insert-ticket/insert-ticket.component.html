@@ -28,8 +28,8 @@
                                     <label class="col-3">Issue</label>
                                     <div class="col-9">
                                         <select formControlName="issue" class="form-control">
-                                            <option value="AF">Afghanistan</option>
-                                            <option value="AX">Åland Islands</option>
+                                            <option [value]=""></option>
+                                            <option *ngFor="let issue of issue_list; let i = index" [value]="issue_list[i].value">{{issue.name}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -43,8 +43,8 @@
                                     <label class="col-3">Assigned User: </label>
                                     <div class="col-9">
                                         <select formControlName="assigned_user" class="form-control">
-                                            <option value="AF">Afghanistan</option>
-                                            <option value="AX">Åland Islands</option>
+                                            <option [value]=""></option>
+                                            <option *ngFor="let technician of technicianList; let i = index" [value]="technicianList[i].user">{{technician.display_name}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -59,8 +59,8 @@
                                 <label class="col-3">Priority: </label>
                                 <div class="col-9">
                                     <select formControlName="priority" class="form-control">
-                                        <option value="AF">Afghanistan</option>
-                                        <option value="AX">Åland Islands</option>
+                                        <option [value]=""></option>
+                                        <option *ngFor="let priority of priority_list let i = index;"[value]="priority_list[i].id">{{priority.value}}</option>
                                     </select>
                                 </div>
                             </div>

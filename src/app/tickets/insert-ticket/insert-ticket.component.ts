@@ -7,6 +7,7 @@ import
 MAT_DIALOG_DATA,MatDialogRef } from "@angular/material";
 import {UserService} from "../../services/user.service";
 import {TechnicianService} from "../../services/technician.service";
+import {TicketService} from "../../services/ticket.service";
  
 @Component({
   selector: 'app-insert-ticket',
@@ -20,14 +21,18 @@ export class InsertTicketComponent implements OnInit {
   sessionData : any;
   technicianList : any;
 
-  issues : [
-	  {id:0, name : "Service Down", value:"servicedown"},
-	  {id:1, name : "Phone", value : "phone"},
-	  {id:2, name: "Channel Problem", value : "channelproblem"},
-	  {id:3, name : "Troubleshoot", value :"troubleshoot"}
+
+  issue_list = [
+    {id:0, name:"Service Down", value:'servicedown'},
+    {id:1, name:"Phone", value:'phone'},
+    {id:2, name:"Channel Problem", value:'channelproblem'},
+    {id:3, name:"Troubleshoot", value :"troubleshoot"}
   ]
 
-  
+  priority_list = [
+    {id:0, value:'normal', name:'Normal'},
+     {id:1, value:'urgent', name:'Urgent'}
+  ]
  
   constructor(
   	private fb : FormBuilder,
@@ -35,7 +40,8 @@ export class InsertTicketComponent implements OnInit {
   	private matDialogRef : MatDialogRef <InsertTicketComponent>,
 	  @Inject (MAT_DIALOG_DATA) data,
 	  private us : UserService,
-	  private tech : TechnicianService
+	  private tech : TechnicianService,
+    private ts : TicketService
   ) {
   	this.accountData = data;
 
@@ -58,8 +64,8 @@ export class InsertTicketComponent implements OnInit {
   		status : ["open"],
   		assigned_user : [""],
   		created_user : [""],
-		notes : [""],
-		priority : [""]  
+		  notes : [""],
+		  priority : [""]  
   	})
   }
   getTechnicians(){
@@ -69,7 +75,7 @@ export class InsertTicketComponent implements OnInit {
         this.technicianList = res.data;
         console.log(this.technicianList);
       } else {
-
+		console.log("Data not found");
       }
     })
   }
@@ -86,11 +92,25 @@ export class InsertTicketComponent implements OnInit {
 			  assigned_date : new Date().toISOString(),
 			  created_user : this.sessionData.user.user_name,
 			  created_date : new Date().toISOString(),
-			  notes : this.ticketForm.controls["notes"].value
+			  notes : this.ticketForm.controls["notes"].value,
+        issue : this.ticketForm.controls["issue"].value,
+        subject : this.ticketForm.controls["subject"].value
 		  }
 
-		  console.log(ticketObj);
+		  this.ts.newTicket(ticketObj).toPromise()
+      .then((res:any)=>{
+        if(res.status == "ok"){
+          Swal.fire("", "New Ticket Created", "success");
+          this.matDialogRef.close();
+        } else {
+          Swal.fire("", "Failed! Try Again", "error");
+        }
+      })
 	  }
+  }
+
+  close(){
+    this.matDialogRef.close();
   }
 
 }
