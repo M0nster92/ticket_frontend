@@ -14,7 +14,7 @@ export class TicketService {
   ) { }
 
   getAllTickets(){
-  	return this.http.get<[]>(this.ticket_api+"/getticket");
+  	return this.http.get<[]>(this.ticket_api+"/gettickets");
   }
 
   newTicket(ticketObj){
@@ -23,6 +23,10 @@ export class TicketService {
 
   updateTicket(ticketId, ticketObj){
   	return this.http.post<[]>(this.ticket_api+"/updateticket/"+ticketId, ticketObj);
+  }
+
+  getTicketByAccount(accountCode){
+    return this.http.get<[]>(this.ticket_api+"/getticket/"+accountCode);
   }
   
 }

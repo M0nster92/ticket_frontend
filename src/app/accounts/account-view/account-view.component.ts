@@ -5,6 +5,7 @@ import {MatTableDataSource, MatDialog, MatDialogModule, MatDialogConfig} from '@
 import {SubscribeDeviceComponent} from "../subscribe-device/subscribe-device.component";
 import {SubscribePackageComponent} from "../subscribe-package/subscribe-package.component";
 import {InsertTicketComponent} from "../../tickets/insert-ticket/insert-ticket.component";
+import {TicketService} from "../../services/ticket.service";
 
 @Component({
   selector: 'app-account-view',
@@ -20,6 +21,7 @@ export class AccountViewComponent implements OnInit {
   options: Boolean = false;
   deviceList : any;
   packageList : any;
+  ticketData : any;
 
 
   //subscription_table boolean
@@ -32,7 +34,8 @@ export class AccountViewComponent implements OnInit {
   constructor(
     private route : ActivatedRoute,
     private as : AccountService,
-    private dialog : MatDialog
+    private dialog : MatDialog,
+    private ts : TicketService
   ) { }
 
   ngOnInit(): void {
@@ -53,8 +56,21 @@ export class AccountViewComponent implements OnInit {
         this.fullName = this.AccountObj.first_name + " "+ this.AccountObj.last_name;
         this.packageList = res.packages;
         this.deviceList = res.devices;
+        this.getTickets();
         this.loaded = true;
         //console.log(this.AccountObj);
+      }
+    })
+  }
+
+  getTickets(){
+    this.ts.getTicketByAccount(this.AccountObj.account_code).toPromise()
+    .then((res:any)=>{
+      if(res.status == "ok"){
+        this.ticketData = res.data;
+        console.log("Ticket Data ", this.ticketData);
+      } else {
+        console.log("error getting ticket Data");
       }
     })
   }
