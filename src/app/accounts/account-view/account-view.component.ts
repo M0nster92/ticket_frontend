@@ -26,10 +26,8 @@ export class AccountViewComponent implements OnInit {
 
   //subscription_table boolean
   subscription_option: boolean = false;
-  subscription_device : boolean = false;
+  subscription_device : boolean = true;
   subscription_package : boolean = false;
-  subscription_billing : boolean = false;
-  subscription_default : boolean = true;
 
   constructor(
     private route : ActivatedRoute,
@@ -87,30 +85,13 @@ export class AccountViewComponent implements OnInit {
   subscriptionDevice(){
     this.subscription_device = true;
     this.subscription_package  = false;
-    this.subscription_billing  = false;
-    this.subscription_default = false;
   }
 
   subscriptionPackage(){
     this.subscription_device = false;
     this.subscription_package  = true;
-    this.subscription_billing  = false;
-    this.subscription_default = false;
   }
 
-  subscriptionBilling(){
-    this.subscription_device = false;
-    this.subscription_package  = false;
-    this.subscription_billing  = true;
-    this.subscription_default = false;
-  }
-
-  subscriptionBack(){
-    this.subscription_device = false;
-    this.subscription_package  = false;
-    this.subscription_billing  = false;
-    this.subscription_default = true;
-  }
 
   newDevice(){
     const NewDeviceConfig = new MatDialogConfig();

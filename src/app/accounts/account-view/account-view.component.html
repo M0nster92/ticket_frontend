@@ -98,23 +98,9 @@
                                     <div class="d-flex align-items-center">
                                         <a (click)="subscriptionDevice()" class="btn btn-hover-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Device</a>
                                         <a (click)="subscriptionPackage()" class="btn btn-hover-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Package</a>
-                                        <a (click)="subscriptionBilling()" class="btn btn-hover-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Billing</a>
-                                        <a (click)="subscriptionBack()" class="btn btn-hover-transparent-primary font-weight-bold mr-2" style="margin-left: 20px;">Back</a>
                                     </div>
                                 </div>
-                                <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_default">
-                                    <div class="table-responsive">
-                                        <span>Table</span>
-                                        <table class="data">
-                                            <table class="table table-bordered">
-                                                <tr>
-                                                    <td class="datalabel font-weight-bold my-2">Package</td>
-                                                    <td class="data my-2">World</td>
-                                                </tr>
-                                            </table>
-                                        </table>
-                                    </div>
-                                </div>
+                                
                                 <div class="card-body py-0 " style="margin-top: 10px; " *ngIf="subscription_device">
                                     <button (click)="newDevice()" class="btn btn-light font-weight-bold mr-2" style="float: right;">New Device</button>
                                     <div class="table-responsive ">
