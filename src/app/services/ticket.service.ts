@@ -32,5 +32,13 @@ export class TicketService {
   getTicketByIssue(issue){
     return this.http.get<[]>(this.ticket_api+"/gettickets/?issue="+issue);
   }
+
+  getRecentTicket(){
+    return this.http.get<[]>(this.ticket_api+"/getrecenttickets");
+  }
+
+  getRecentTicketByIssue(issue){
+    return this.http.get<[]>(this.ticket_api+"/getrecenttickets/?issue="+issue);
+  }
   
 }

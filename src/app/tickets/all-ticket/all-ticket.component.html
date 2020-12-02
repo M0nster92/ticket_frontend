@@ -79,6 +79,7 @@
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Issue</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">First Name</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Last Name</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Assigned</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Created</th>
                                                     </tr>
                                                 </thead>
@@ -89,6 +90,7 @@
                                                         <td>{{ticket.issue}}</td>
                                                         <td>{{ticket.first_name}}</td>
                                                         <td>{{ticket.last_name}}</td>
+                                                        <td>{{ticket.assigned_user}}</td>
                                                         <td>{{ticket.created_date | date :'yyyy/MM/dd hh:mm a' }}</td>
                                                     </tr>
                                                 </tbody>
