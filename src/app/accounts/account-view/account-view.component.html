@@ -201,8 +201,38 @@
                                 </div>
                             </div>
                             <div class="card-scroll " style="height: 330px; ">
+                                <div class="card-body py-0" style="margin-top: 10px;">
+                                    <div class="table-responsive">
+                                        <table class="table table-head-custom table-vertical-center " id="kt_advance_table_widget_2 ">
+                                            <thead *ngIf="ticketData ">
+                                                <tr class="text-uppercase ">
+                                                    <th class="pl-0" style="min-width: 100px;">Ticket Id</th>
+                                                    <th style="min-width: 120px">Issue</th>
+                                                    <th style="min-width: 120px">Status</th>
+                                                    <th style="min-width: 120px">Create Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngFor = "let ticket of ticketData">
+                                                    <td class="pl-0">
+                                                        <a>{{ticket.ticket_id}}</a>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ticket.issue}}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span>{{ticket.status}}</span>
+                                                    </td>
 
-
+                                                    <td>
+                                                        <span>{{ticket.created_date | date : 'yyyy/MM/dd hh:mm a'}}</span>
+                                                    </td>
+                                                </tr>
+                                                
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!--begin::Items-->
