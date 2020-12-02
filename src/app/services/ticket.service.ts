@@ -40,5 +40,9 @@ export class TicketService {
   getRecentTicketByIssue(issue){
     return this.http.get<[]>(this.ticket_api+"/getrecenttickets/?issue="+issue);
   }
+
+  getTicketByAssign(name){
+    return this.http.get<[]>(this.ticket_api+"/gettickets/?assigned_user="+name );
+  }
   
 }
