@@ -28,5 +28,9 @@ export class TicketService {
   getTicketByAccount(accountCode){
     return this.http.get<[]>(this.ticket_api+"/getticket/"+accountCode);
   }
+
+  getTicketByIssue(issue){
+    return this.http.get<[]>(this.ticket_api+"/gettickets/?issue="+issue);
+  }
   
 }

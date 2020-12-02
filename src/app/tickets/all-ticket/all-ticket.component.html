@@ -44,22 +44,22 @@
                                         <!--<div class="col-sm-12 col-md-6">
                                                 <div class="dataTables_length" id="kt_datatable_length"><label>Show <select name="kt_datatable_length" aria-controls="kt_datatable" class="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div>
                                             </div> -->
-                                        <!-- <form class="form" [formGroup]="sortForm">
+                                        <form class="form" [formGroup]="sortForm">
                                             <div class="col-sm-12 col-md-8">
                                                 <div class="dataTables_length" id="kt_datatable1_length"><label>Type:
                                                             <select (change)="onChangeType()" name="kt_datatable1_length" aria-controls="kt_datatable1"
                                                                 class="custom-select custom-select-sm form-control form-control-sm"
                                                                 formControlName="type">
                                                                 <option [value]=""></option>
-                                                                <option *ngFor="let type of account_types; let i = index" [value]="account_types[i].value">{{type.name}}</option>
+                                                                <option *ngFor="let type of issue_list; let i = index" [value]="issue_list[i].value">{{type.name}}</option>
                                                             </select>
                     
-                                                            Result: count</label></div>
+                                                            Result: {{ticketCount}}</label></div>
                                             </div>
 
                                         </form>
 
-                                        <form class="form">
+                                       <!-- <form class="form">
                                             <div class="col-sm-12 col-md-12">
                                                 <div id="kt_datatable_filter" class="dataTables_filter"><label>Search Name:
                                                     <input formControlName="str" type="search" class="form-control form-control-sm" placeholder="" aria-controls="kt_datatable">
@@ -75,25 +75,21 @@
                                                 <thead>
 
                                                     <tr role="row">
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Account ID</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Type</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Ticket ID</th>
+                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Issue</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">First Name</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Last Name</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Phone</th>
-                                                        <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Address</th>
                                                         <th class="sorting" tabindex="0" aria-controls="kt_datatable" rowspan="1" colspan="1">Created</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody *ngIf= "loaded">
                                                     <!--<tr *ngFor=" let data of accountList | paginate:{itemsPerPage: 10, currentPage: p} "> -->
-                                                    <tr>
-                                                        <td class="text-hover-primary" style="cursor: pointer;">code</td>
-                                                        <td>type</td>
-                                                        <td>first name</td>
-                                                        <td>last name</td>
-                                                        <td>mobile phone</td>
-                                                        <td>street</td>
-                                                        <td>date</td>
+                                                    <tr *ngFor = "let ticket of ticketData">
+                                                        <td class="text-hover-primary" style="cursor: pointer;">{{ticket.ticket_id}}</td>
+                                                        <td>{{ticket.issue}}</td>
+                                                        <td>{{ticket.first_name}}</td>
+                                                        <td>{{ticket.last_name}}</td>
+                                                        <td>{{ticket.created_date | date :'yyyy/MM/dd hh:mm a' }}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
