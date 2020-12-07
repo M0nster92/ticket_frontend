@@ -17,6 +17,7 @@ import { AllTicketComponent } from './tickets/all-ticket/all-ticket.component';
 import { MonthlyTicketComponent } from './tickets/monthly-ticket/monthly-ticket.component';
 import { MyTicketComponent } from './tickets/my-ticket/my-ticket.component';
 import { TechlistComponent } from './technician/techlist/techlist.component';
+import {TicketViewComponent} from './tickets/ticket-view/ticket-view.component';
 
 const routes: Routes = [
   {path : '', component: NavComponent,
@@ -34,7 +35,8 @@ const routes: Routes = [
     {path : "allticket", component:AllTicketComponent},
     {path : "monthlyticket", component:MonthlyTicketComponent},
     {path : "myticket", component:MyTicketComponent},
-    {path : "technicianlist", component:TechlistComponent}
+    {path : "technicianlist", component:TechlistComponent},
+    {path : "ticketview/:id", component: TicketViewComponent}
   ]
 },
 {path : "login", component:LoginComponent},

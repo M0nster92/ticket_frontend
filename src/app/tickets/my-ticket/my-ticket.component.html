@@ -60,7 +60,7 @@
                                                 <tbody *ngIf= "loaded">
                                                     <!--<tr *ngFor=" let data of accountList | paginate:{itemsPerPage: 10, currentPage: p} "> -->
                                                     <tr *ngFor = "let ticket of ticketData">
-                                                        <td class="text-hover-primary" style="cursor: pointer;">{{ticket.ticket_id}}</td>
+                                                        <td (click)="ticketViewPage(ticket.ticket_id)" class="text-hover-primary" style="cursor: pointer;">{{ticket.ticket_id}}</td>
                                                         <td>{{ticket.issue}}</td>
                                                         <td>{{ticket.first_name}}</td>
                                                         <td>{{ticket.last_name}}</td>

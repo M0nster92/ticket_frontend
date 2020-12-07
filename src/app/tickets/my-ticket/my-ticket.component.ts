@@ -3,7 +3,7 @@ import { TicketService } from "../../services/ticket.service";
 import { FormBuilder, FormGroup, FormControl, Validators, FormArray} 
 from "@angular/forms";
 import { UserService } from "../../services/user.service";
-
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-my-ticket',
@@ -30,7 +30,9 @@ export class MyTicketComponent implements OnInit {
   constructor(
   	private ts: TicketService,
   	private fb : FormBuilder,
-  	private us : UserService
+  	private us : UserService,
+    private route : ActivatedRoute,
+    private router :Router
   	) { }
 
   ngOnInit(): void {
@@ -51,6 +53,11 @@ export class MyTicketComponent implements OnInit {
   			this.loaded = false;
   		}
   	})
+  }
+
+  ticketViewPage(id){
+    console.log("Ticket ID ", id);
+    this.router.navigate(["ticketview", id]);
   }
 
 
