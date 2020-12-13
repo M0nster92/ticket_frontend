@@ -35,6 +35,13 @@ export class TicketViewComponent implements OnInit {
      {id:1, value:'urgent', name:'Urgent'}
   ]
 
+  action_type = [
+    {id:0, value : "call", name : "Call"},
+    {id:1, value: "check", name :"Check"},
+    {id:2, value : "note", name: "note"},
+    {id:3, value: "test", name:"Test"}
+  ]
+
 
   constructor(
     private ts : TicketService,
